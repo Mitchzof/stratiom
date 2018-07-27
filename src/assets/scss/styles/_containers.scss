@@ -1,0 +1,51 @@
+@mixin transform($transforms) {
+	   -moz-transform: $transforms;
+	     -o-transform: $transforms;
+	    -ms-transform: $transforms;
+	-webkit-transform: $transforms;
+          transform: $transforms;
+}
+
+.top-container {
+  padding: 200px 0;
+  @include transform(skew(0deg, -10deg));
+  margin-top: -200px;
+	min-height: calc(105vh);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to right, #3064ba, #407ee5);
+  color: 'white';
+
+  .content{
+    @include transform(skew(0deg, 10deg));
+  }
+}
+
+.mid-container {
+	min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+}
+
+.footer {
+	height: 100px;
+	background-color: $bg-dark;
+	width: 100%;
+	display: flex;
+	color: $bg-dark-text;
+}
+
+.key-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 50px;
+	width: 100%;
+	background-color: $bg;
+	border: 1px solid rgba(119, 119, 119, 0.08);
+	border-radius: 5px;
+	font-size: 2.5vh;
+}
