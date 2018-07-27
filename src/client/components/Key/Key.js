@@ -24,7 +24,7 @@ class Key extends Component {
         <Navbar fixed={ true } />
         <div className="container valign-wrapper" style={{ minHeight: '100vh' }}>
           <div className="row">
-            <div className="col s6">
+            <div className="col">
               <Keygen submit={ this.setKeypair } />
               <Keypair privkey={ this.state.privkey } pubkey={ this.state.pubkey } />
             </div>

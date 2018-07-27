@@ -11,25 +11,34 @@
   background-color: #fff;
   border: 1px solid rgba(119, 119, 119, 0.08);
   box-shadow: 0px 1px 0px 1px rgba(119, 119, 119, 0.1);
-  height: 250px;
   width: 500px;
   border-radius: 2px;
+
+  @media #{$small-and-down} {
+    width: 85vw;
+  }
 }
 
 .keygen-panel {
   background-color: #fff;
   border: 1px solid rgba(119, 119, 119, 0.08);
   box-shadow: 0px 1px 0px 1px rgba(119, 119, 119, 0.1);
-  height: 150px;
-  width: 750px;
+  max-width: 750px;
   border-radius: 2px;
+
+  @media #{$small-and-down} {
+    width: 85vw;
+  }
 }
 
 .keypair-panel {
   background-color: #fff;
   border: 1px solid rgba(119, 119, 119, 0.08);
   box-shadow: 0px 1px 0px 1px rgba(119, 119, 119, 0.1);
-  height: 250px;
-  width: 750px;
+  max-width: 750px;
   border-radius: 2px;
+
+  @media #{$small-and-down} {
+    width: 85vw;
+  }
 }

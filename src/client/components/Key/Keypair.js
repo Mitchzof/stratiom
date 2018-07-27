@@ -10,7 +10,7 @@ class Keypair extends Component {
     if (this.props.privkey && this.props.pubkey) {
       return (
         <div className="keypair-panel valign-wrapper">
-          <div className="col s10 offset-s1">
+          <div className="col s10 offset-s1" style={{ marginTop: "20px" }}>
             <div className="row">
               Public Key
               <div className="key-container">
@@ -18,7 +18,7 @@ class Keypair extends Component {
               </div>
             </div>
             <div className="row">
-              Secret Key - <b>Warning:</b> Save and keep this secure 
+              Secret Key - <b>Warning:</b> Save and keep this secure
               <div className="key-container">
                 { this.props.privkey }
               </div>

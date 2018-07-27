@@ -46,7 +46,7 @@ class Wallet extends Component {
           <Navbar fixed={ true } />
           <div className="container valign-wrapper" style={{ minHeight: '100vh' }}>
             <div className="row">
-              <div className="col s6">
+              <div className="col">
                 <KeyInput dispatch={ this.props.setPrivkey }/>
                 <KeyLink />
               </div>

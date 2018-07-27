@@ -38,8 +38,8 @@ $primary-color: color("materialize-red", "lighten-2") !default;
 $primary-color-light: lighten($primary-color, 15%) !default;
 $primary-color-dark: darken($primary-color, 15%) !default;
 
-$secondary-color: color("teal", "lighten-1") !default;
-$success-color: color("green", "base") !default;
+$secondary-color: #3f7bde !default;
+$success-color: #3f7bde !default;
 $error-color: color("red", "base") !default;
 $link-color: color("light-blue", "darken-1") !default;
 
@@ -204,7 +204,7 @@ $select-radius: 2px !default;
 $select-disabled-color: rgba(0,0,0,.3) !default;
 
 // Switches
-$switch-bg-color: $secondary-color !default;
+$switch-bg-color: #3f7bde !default;
 $switch-checked-lever-bg: desaturate(lighten($switch-bg-color, 25%), 25%) !default;
 $switch-unchecked-bg: #F1F1F1 !default;
 $switch-unchecked-lever-bg: rgba(0,0,0,.38) !default;
