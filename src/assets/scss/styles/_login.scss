@@ -5,6 +5,10 @@
   height: 400px;
   width: 350px;
   border-radius: 2px;
+
+  @media #{$small-and-down} {
+    width: auto;
+  }
 }
 
 .privkey-panel {

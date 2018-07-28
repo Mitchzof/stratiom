@@ -4,6 +4,13 @@ import StellarSdk from 'stellar-sdk';
 class Keypair extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      hidden: true
+    }
+  }
+
+  renderCensoredText(str) {
+    return
   }
 
   render() {

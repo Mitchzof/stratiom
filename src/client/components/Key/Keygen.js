@@ -18,7 +18,7 @@ class Keygen extends Component {
       <div className="keygen-panel valign-wrapper">
         <form className="col s10 offset-s1" onSubmit={ this.handleSubmit }>
           <div className="row center-align">
-            <p style={{ marginTop: '20px', fontSize: '2.5vh' }}>
+            <p style={{ marginTop: '20px', fontSize: '20px' }}>
               Create a new account keypair.
             </p>
           </div>
@@ -30,7 +30,11 @@ class Keygen extends Component {
             <p>
               <b>Private Key</b>: The private key is what controls sensitive actions from the account,
               such as sending funds.  It should be stored safely and not shared.  If the private key is lost,
-              account access will, in turn, be irrecoverably lost.
+              account access will be irrecoverably lost.
+            </p>
+            <p style={{ fontSize: '10px' }}>
+              <i>To learn more about your Stellar account,
+              <a href="https://www.stellar.org/developers/guides/concepts/accounts.html"> click here</a>.</i>
             </p>
           </div>
           <div className="center-align" style={{ marginBottom: "25px" }}>

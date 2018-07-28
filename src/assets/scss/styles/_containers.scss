@@ -41,15 +41,46 @@
 .key-container {
 	display: flex;
 	align-items: center;
+	justify-content: space-between;
 	text-align: center;
 	height: 50px;
 	width: 100%;
 	background-color: $bg;
 	border: 1px solid rgba(119, 119, 119, 0.08);
 	border-radius: 5px;
-	font-size: 2.5vh;
+	font-size: 17px;
+	padding-left: 5px;
+	overflow: scroll;
+}
+
+.offset-nav {
+	margin-top: $navbar-height;
 
 	@media #{$small-and-down} {
-		overflow: scroll;
+		margin-top: $navbar-height-mobile;
+	}
+}
+
+.selection-container {
+	height: 50px;
+	display: flex;
+	width: 500px;
+	justify-content: center;
+	box-shadow: 0px 1px 0px 1px rgba(119, 119, 119, 0.1);
+	background-color: #fff;
+
+	@media #{$small-and-down} {
+    width: 85vw;
+  }
+
+	a {
+		cursor: pointer;
+		display: flex;
+		width: 50%;
+		justify-content: center;
+		align-items: center;
+		color: black;
+		padding-left: 5px;
+		padding-right: 5px;
 	}
 }

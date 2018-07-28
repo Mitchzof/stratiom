@@ -8,7 +8,7 @@ import Navbar from '../Navbar/Navbar';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { setPrivkey } from '../../../store/actions';
-import KeyInput from './KeyInput';
+import KeyContainer from './KeyContainer';
 import KeyLink from '../Key/KeyLink';
 import Key from '../Key/Key';
 
@@ -44,14 +44,7 @@ class Wallet extends Component {
       return (
         <div>
           <Navbar fixed={ true } />
-          <div className="container valign-wrapper" style={{ minHeight: '100vh' }}>
-            <div className="row">
-              <div className="col">
-                <KeyInput dispatch={ this.props.setPrivkey }/>
-                <KeyLink />
-              </div>
-            </div>
-          </div>
+          <KeyContainer dispatch={ this.props.setPrivkey } />
         </div>
       );
     }

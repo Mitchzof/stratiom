@@ -11,28 +11,28 @@ import config from './config';
 const server = express();
 
 //Redis Store
-let RedisStore = connectRedis(session);
-let options = {
-  host: 'localhost',
-  port: 6379
-}
-
-//Express-session config
-let sess = {
-  store: new RedisStore(options),
-  secret: config.pk,
-  resave: false,
-  saveUninitialized: false,
-  cookie: {
-    secure: false
+/*
+  let RedisStore = connectRedis(session);
+  let options = {
+    host: 'localhost',
+    port: 6379
   }
-}
 
-if (process.env.NODE_ENV === 'production') {
-  sess.cookie.secure = true;
-}
-
-server.use(session(sess))
+  //Express-session config
+  let sess = {
+    store: new RedisStore(options),
+    secret: config.pk,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      secure: false
+    }
+  }
+  if (process.env.NODE_ENV === 'production') {
+    sess.cookie.secure = true;
+  }
+  server.use(session(sess));
+*/
 
 //Set bodyparser and static folder
 server.use(bodyParser.json());
@@ -72,7 +72,7 @@ server.get('*', (req, res) => {
     //Create store and set initial state/preloaded data
     let store = createStore(reducer);
     store.dispatch(preload(data));
-    (req.session.loggedIn) ? store.dispatch(loginSuccess()) : store.dispatch(loginError('Not logged in'));
+    //(req.session.loggedIn) ? store.dispatch(loginSuccess()) : store.dispatch(loginError('Not logged in'));
 
     //Render page content
     const content = renderToString(
