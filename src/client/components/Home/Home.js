@@ -7,10 +7,11 @@ import Footer from './Footer';
 class Home extends Component {
   render() {
     return (
-      <div>
+      <div className="home-container">
         <Navbar />
-        <TopContainer content={ 'test' } />
-        <MidContainer content={ 'test' } />
+        <TopContainer />
+        <MidContainer />
+        <Footer />
       </div>
     );
   }

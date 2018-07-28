@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class Footer extends Component {
   constructor(props) {
@@ -7,8 +8,21 @@ class Footer extends Component {
 
   render() {
     return (
+      <div style={{backgroundColor: 'rgb(242, 246, 249)', width: '100%'}}>
       <div className="footer">
-        Test
+        <div style={{ maxWidth: '75%' }}>
+          <p>
+            Made with ❤️ in San Francisco
+          </p>
+        </div>
+        <div className="footer-link-container">
+          <Link to="/terms"><u>Terms and Conditions</u></Link>
+          <Link to="/privacy"><u>Privacy Policy</u></Link>
+        </div>
+        <div className="footer-link-container">
+          <a href="https://github.com/Mitchzof/stratiom"><i className="small material-icons">code</i></a>
+        </div>
+      </div>
       </div>
     );
   }

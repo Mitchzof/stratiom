@@ -6,6 +6,9 @@
 import Home from './components/Home/Home';
 import Wallet from './components/Wallet/Wallet';
 import Key from './components/Key/Key';
+import Error from './components/Misc/Error';
+import Terms from './components/Terms/Terms';
+import Privacy from './components/Privacy/Privacy';
 
 const routes = [
   {
@@ -20,6 +23,17 @@ const routes = [
   {
     path: '/key',
     component: Key
+  },
+  {
+    path: '/terms',
+    component: Terms
+  },
+  {
+    path: '/privacy',
+    component: Privacy
+  },
+  {
+    component: Error
   }
 ];
 

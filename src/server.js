@@ -5,7 +5,7 @@ import {
   session, redis, connectRedis, loginSuccess, loginError
 } from './imports';
 
-import config from './config';
+//import config from './config';
 
 //Server initialization
 const server = express();

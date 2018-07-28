@@ -234,9 +234,9 @@ $medium-only: "only screen and (min-width : #{$small-screen-up}) and (max-width 
 // ==========================================================================
 
 $num-cols: 12 !default;
-$gutter-width: 1.5rem !default;
-$element-top-margin: $gutter-width/3 !default;
-$element-bottom-margin: ($gutter-width*2)/3 !default;
+$gutter-width: 0 !default;
+$element-top-margin: 0 !default;
+$element-bottom-margin: 0 !default;
 
 
 // 13. Navigation Bar

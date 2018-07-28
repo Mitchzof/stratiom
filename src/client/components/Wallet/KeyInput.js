@@ -59,7 +59,9 @@ class KeyInput extends Component {
               <p>
                 <label>
                   <input id="check" type="checkbox" className="filled-in" checked={ this.state.checked } onChange={ this.handleChange } />
-                  <span>Something something</span>
+                  <span>
+                    I have read and agree to both the <Link to="/terms">Terms of Service</Link> and <Link to="/privacy">Privacy Policy</Link>.
+                  </span>
                 </label>
               </p>
             </div>
@@ -72,8 +74,19 @@ class KeyInput extends Component {
         </div>
       );
     } else {
+      console.log('here');
       return (
         <div className="privkey-panel valign-wrapper">
+          <div className="col s10 offset-s1">
+            <div className="row center-align">
+              <img className="ledger-logo-container" src="/assets/ledger-logo.png" />
+            </div>
+            <div className="row center-align">
+              <p>
+                Integration coming soon.
+              </p>
+            </div>
+          </div>
         </div>
       );
     }

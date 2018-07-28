@@ -18,7 +18,7 @@ class Navbar extends Component {
     this.handleScroll = this.handleScroll.bind(this);
 
     let style = (this.props.fixed) ? scrolledStyle : initialStyle;
-    let color = (this.props.fixed) ? 'black' : 'white';
+    let color = (this.props.fixed) ? '#505558' : 'white';
 
     this.state = {
       style: style,
@@ -41,7 +41,7 @@ class Navbar extends Component {
 
   handleScroll() {
     if (window.scrollY != 0 && this.state.scrollY == 0) {
-      this.setState({ style: scrolledStyle, scrollY: window.scrollY, color: 'black' });
+      this.setState({ style: scrolledStyle, scrollY: window.scrollY, color: '#505558' });
     } else if (window.scrollY == 0 && this.state.scrollY != 0) {
       this.setState({ style: initialStyle, scrollY: window.scrollY, color: 'white' });
     }

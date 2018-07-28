@@ -7,7 +7,7 @@ const uglify = require('gulp-uglify');
 let ROOT = '../'
 
 let dest = path.resolve(__dirname, ROOT, 'dist/public/js');
-let watchPath = path.resolve(__dirname, ROOT, 'src/assets/scripts/**/*.js');
+let watchPath = path.resolve(__dirname, ROOT, 'src/public/scripts/**/*.js');
 
 gulp.task('build:scripts', function () {
   return gulp.src(watchPath)
