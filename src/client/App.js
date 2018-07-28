@@ -5,8 +5,7 @@ import routes from './routes';
 let style = {
   backgroundColor: '#f2f6f9',
   minHeight: '100vh',
-  minWidth: '100vw',
-  paddingBottom: '20px'
+  minWidth: '100vw'
 }
 
 //Render app based on current route
