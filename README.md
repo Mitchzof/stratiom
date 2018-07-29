@@ -1,11 +1,12 @@
 # Stratiom
 Stellar p2p web-wallet
 
-##Deployment
-###Prerequisites
+## Deployment
+
+### Prerequisites
 Node.js, Gulp
 
-###Environment Setup
+### Environment Setup
 ```sh
 # Clone the project
 git clone https://github.com/mitchzof/stratiom.git
@@ -15,19 +16,19 @@ cd stratiom
 npm install
 ```
 
-###Building
+### Building
 
 ```sh
 # Build the src
 gulp build
 ```
 
-###Running
+### Running
 
 ```
 # Run the server (in dev mode)
 node ./dist/server.js
 ```
 
-##Notes:
+## Notes:
 I do aim to make the build process easier before release.  Take note that these are just temporary setup instructions.
