@@ -51,7 +51,7 @@ class KeyContainer extends Component {
             </div>
             <div className="row">
               <div className="col">
-                <KeyInput dispatch={ this.props.dispatch } method={ this.state.method } />
+                <KeyInput setPrivkey={ this.props.setPrivkey } setPubkey={ this.props.setPubkey } method={ this.state.method } />
                 <KeyLink />
               </div>
             </div>

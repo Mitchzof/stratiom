@@ -9,8 +9,7 @@ class ControlNavSide extends Component {
   render() {
     return (
       <ul id="slide-out" className="sidenav sidenav-fixed cp-sidenav">
-        <li><Link to="/cp">Overview</Link></li>
-        <li><Link to="/cp/claimupload">Upload Claims</Link></li>
+        <li><Link to="/wallet">Overview</Link></li>
       </ul>
     );
   }

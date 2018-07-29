@@ -1,7 +1,24 @@
 .cp-container {
   margin-left: 250px;
+  padding: 35px 25px 25px 25px;
 
   @media #{$medium-and-down} {
     margin-left: 0px;
+  }
+
+  .panel-container {
+    background-color: #fff;
+    border: 1px solid rgba(119, 119, 119, 0.08);
+    box-shadow: 0px 1px 0px 1px rgba(119, 119, 119, 0.1);
+    border-radius: 3px;
+
+    .panel-header {
+      padding: 5px 10px 5px 10px;
+      border-bottom: 1px solid rgba(119, 119, 119, 0.08);
+    }
+
+    .panel-content {
+      padding: 5px 10px 5px 10px;
+    }
   }
 }

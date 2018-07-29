@@ -7,7 +7,11 @@ class Overview extends Component {
 
   render() {
     return (
-      <div className="cp-container">Overview</div>
+      <div className="cp-container">
+        <div className="panel-container">
+          Overview
+        </div>
+      </div>
     );
   }
 }

@@ -18,3 +18,25 @@
     padding-left: 20px;
   }
 }
+
+.loader-container {
+  width: 100%;
+  margin-top: 40vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 250px;
+
+  @media #{$medium-and-down} {
+    margin-left: 0px;
+  }
+}
+
+.refresh-button {
+  cursor: pointer;
+  height: 50px;
+  color: #505558;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

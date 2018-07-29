@@ -33,8 +33,9 @@ class KeyInput extends Component {
   handleSubmit(e) {
     e.preventDefault();
     try {
-      StellarSdk.Keypair.fromSecret(this.state.privkey);
-      this.props.dispatch(this.state.privkey);
+      let keypair = StellarSdk.Keypair.fromSecret(this.state.privkey);
+      this.props.setPrivkey(this.state.privkey);
+      this.props.setPubkey(keypair.publicKey());
     } catch (e) {
       console.log(e);
       M.toast({ html: 'Error: Invalid private key', classes: 'error-toast' });
