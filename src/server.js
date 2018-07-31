@@ -11,28 +11,26 @@ import {
 const server = express();
 
 //Redis Store
-/*
-  let RedisStore = connectRedis(session);
-  let options = {
-    host: 'localhost',
-    port: 6379
-  }
+let RedisStore = connectRedis(session);
+let options = {
+  host: 'localhost',
+  port: 6379
+}
 
-  //Express-session config
-  let sess = {
-    store: new RedisStore(options),
-    secret: config.pk,
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-      secure: false
-    }
+//Express-session config
+let sess = {
+  store: new RedisStore(options),
+  secret: 'tempsecret',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    secure: false
   }
-  if (process.env.NODE_ENV === 'production') {
-    sess.cookie.secure = true;
-  }
-  server.use(session(sess));
-*/
+}
+if (process.env.NODE_ENV === 'production') {
+  sess.cookie.secure = true;
+}
+server.use(session(sess));
 
 //Set bodyparser and static folder
 server.use(bodyParser.json());

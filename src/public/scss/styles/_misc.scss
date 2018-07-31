@@ -21,15 +21,10 @@
 
 .loader-container {
   width: 100%;
-  margin-top: 40vh;
+  margin-top: 25vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-left: 250px;
-
-  @media #{$medium-and-down} {
-    margin-left: 0px;
-  }
 }
 
 .refresh-button {
@@ -39,4 +34,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.success-toast {
+  background-color: rgba(23, 174, 146, 1);
+  box-shadow: 1px 2px 1px 0px rgba(119, 119, 119, 0.15);
+}
+
+.error-toast {
+  background-color: #cc0000;
+  box-shadow: 1px 2px 1px 0px rgba(119, 119, 119, 0.15);
 }

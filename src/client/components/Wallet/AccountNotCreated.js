@@ -7,7 +7,7 @@ class AccountNotCreated extends Component {
   }
 
   handleClick(e) {
-    this.props.hasLoaded(false);
+    this.props.loadAccount();
   }
 
   render() {

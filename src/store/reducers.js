@@ -36,6 +36,10 @@ const userReducer = (state = { loggedIn: false, loaded: false, msg: '' }, action
       return Object.assign({}, state, {
         account: action.account
       });
+    case "SET_TRUSTLINES":
+      return Object.assign({}, state, {
+        trustlines: action.trustlines
+      });
     default: return state;
   }
 }

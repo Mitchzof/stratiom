@@ -10,6 +10,9 @@ import { bindActionCreators } from 'redux';
 import { setPrivkey, setPubkey } from '../../../store/actions';
 import KeyContainer from './KeyContainer';
 import WalletSetup from './WalletSetup';
+import AddTrustline from './AddTrustline';
+import TrustManager from './TrustManager';
+import Pay from './Pay';
 
 const mapStateToProps = state => {
   return {
@@ -34,10 +37,13 @@ class Wallet extends Component {
       return (
         <div>
           <ControlNavTop loggedIn={ this.props.loggedIn } />
-          <ControlNavSide loggedIn={ this.props.loggedIn } />
+          <ControlNavSide loggedIn={ this.props.loggedIn } pubkey={ this.props.pubkey } />
           <WalletSetup>
             <Switch>
               <Route path="/wallet" exact={ true } component={ Overview } />
+              <Route path="/wallet/trustline" component={ AddTrustline } />
+              <Route path="/wallet/trustlines" component={ TrustManager } />
+              <Route path="/wallet/pay" component={ Pay } />
             </Switch>
           </WalletSetup>
         </div>

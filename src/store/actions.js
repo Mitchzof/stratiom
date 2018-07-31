@@ -38,3 +38,10 @@ export const loadAccount = (acc) => {
     account: acc
   });
 }
+
+export const setTrustlines = (trustlines) => {
+  return ({
+    type: "SET_TRUSTLINES",
+    trustlines: trustlines
+  });
+}
