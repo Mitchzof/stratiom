@@ -59,41 +59,43 @@ export const createTrustline = (privkey, accountId) => {
       .build();
     transaction.sign(keypair);
     return server.submitTransaction(transaction);
-  }).then((res) => {
-    createOffers(privkey, debtAsset);
-  })
+  });
 }
 
-const createOffers = (privkey, buying) => {
+export const createOffers = (privkey, buyIssuer, amount=1000, price=1) => {
   let keypair = StellarSdk.Keypair.fromSecret(privkey);
   let selling = new StellarSdk.Asset('STRTMUSD', keypair.publicKey());
+  let buying = new StellarSdk.Asset('STRTMUSD', buyIssuer);
+  var acc = null;
 
-  server.loadAccount(keypair.publicKey())
-  .then((acc) => {
-    server.offers('accounts', acc.account_id).call()
-    .then(offers => {
-      let willCreateOffer = true;
-      offers.records.forEach(offer => {
-        if (offer.buying.asset_issuer == buying.issuer) {
-          willCreateOffer = false;
-        }
-      });
-      return willCreateOffer;
-    }).then(canCreate => {
-      if (canCreate) {
-        var transaction = new StellarSdk.TransactionBuilder(acc)
-          .addOperation(StellarSdk.Operation.createPassiveOffer({
-            selling: selling,
-            buying: buying,
-            amount: '1000000',
-            price: 1
-          }))
-          .build();
-        transaction.sign(keypair);
-        server.submitTransaction(transaction);
+  return server.loadAccount(keypair.publicKey())
+  .then((account) => {
+    acc = account;
+    return server.offers('accounts', acc.account_id).call()
+  }).then(offers => {
+    let willCreateOffer = true;
+    offers.records.forEach(offer => {
+      if (offer.buying.asset_issuer == buying.issuer) {
+        willCreateOffer = false;
       }
-    })
-  })
+    });
+    return willCreateOffer;
+  }).then(canCreate => {
+    if (canCreate) {
+      var transaction = new StellarSdk.TransactionBuilder(acc)
+        .addOperation(StellarSdk.Operation.createPassiveOffer({
+          selling: selling,
+          buying: buying,
+          amount: amount,
+          price: price
+        }))
+        .build();
+      transaction.sign(keypair);
+      return server.submitTransaction(transaction);
+    } else {
+      return false;
+    }
+  });
 }
 
 export const checkTrustlines = (pubkey, accountId) => {

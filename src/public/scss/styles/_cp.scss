@@ -87,3 +87,12 @@
     margin-left: auto;
   }
 }
+
+#offermodal {
+  word-wrap: break-word;
+  margin-left: calc(12% + 250px);
+
+  @media #{$medium-and-down} {
+    margin-left: auto;
+  }
+}

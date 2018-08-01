@@ -116,7 +116,7 @@ class Pay extends Component {
     }
     return (
       <div className="cp-container">
-        <div className="panel-container">
+        <div className="panel-container" style={{ marginLeft: "10%", marginRight: '10%' }}>
           <div className="row panel-header">
             <h5>
               Send Payment

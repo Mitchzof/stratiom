@@ -4,6 +4,7 @@ import Loader from '../Misc/Loader';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { loadAccount as loadAccountAC, setTrustlines } from '../../../store/actions';
+import OfferModal from './OfferModal';
 
 const mapStateToProps = state => {
   return {
@@ -22,9 +23,11 @@ class AddTrustline extends Component {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.clearFields = this.clearFields.bind(this);
     this.state = {
       checked: false,
-      loading: false
+      loading: false,
+      accountId: ''
     };
   }
 
@@ -34,6 +37,10 @@ class AddTrustline extends Component {
 
   componentWillUnmount() {
     this.mounted = false;
+  }
+
+  clearFields() {
+    this.setState({ accountId: '' });
   }
 
   handleChange(e) {
@@ -59,6 +66,10 @@ class AddTrustline extends Component {
         if (this.mounted) {
           this.setState({ loading: false });
         }
+        let elem = document.getElementById('offermodal');
+        M.Modal.init(elem, { dismissible: false });
+        let instance = M.Modal.getInstance(elem);
+        instance.open();
         M.toast({ html: 'Success: Trustline has been created', classes: 'success-toast' });
       }).catch(e => {
         if (this.mounted) {
@@ -86,7 +97,7 @@ class AddTrustline extends Component {
     }
     return (
       <div className="cp-container">
-        <div className="panel-container">
+        <div className="panel-container" style={{ marginLeft: "10%", marginRight: '10%' }}>
           <div className="row panel-header">
             <h5>
               Create Trustline
@@ -98,17 +109,15 @@ class AddTrustline extends Component {
                 <p>
                   <b>Warning:</b> A trustline should only be created between you and
                   someone that you <b>trust</b>.  A trustline only enables you to receive
-                  assets (debt) from another user.  In order to send assets to another user
-                  he/she must establish trust to your address.  All assets created on Stratiom will
-                  be based on USD for uniformity.
+                  assets (debt) from another user.
                 </p>
                 <p>
-                  Upon creation of the trustline, your account will automatically create
-                  an offer to buy and sell your friends asset 1:1 for your own, enabling
-                  the peer-to-peer payment system.
+                  Upon creation of the trustline, it is suggested that you create an offer to participate in
+                  path payments.  Path payments allow your account to passively mediate payments between
+                  adjacent trustlines.
                 </p>
                 <div className="input-field col s12">
-                  <input id="accountId" type="text" className="validate" onChange={ this.handleChange } />
+                  <input id="accountId" value={ this.state.accountId } type="text" className="validate" onChange={ this.handleChange } />
                   <label htmlFor="accountId">Account ID</label>
                 </div>
               </div>
@@ -130,6 +139,7 @@ class AddTrustline extends Component {
             </form>
           </div>
         </div>
+        <OfferModal privkey={ this.props.privkey } accountId={ this.state.accountId } clear={ this.clearFields } />
       </div>
     );
   }

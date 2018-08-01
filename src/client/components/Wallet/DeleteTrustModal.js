@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { deleteTrustline } from './helpers/stellarHelper.js';
 
-class Loader extends Component {
+class DeleteTrustModal extends Component {
   constructor(props) {
     super(props);
     this.delete = this.delete.bind(this);
@@ -30,4 +30,4 @@ class Loader extends Component {
   }
 }
 
-export default Loader;
+export default DeleteTrustModal;
