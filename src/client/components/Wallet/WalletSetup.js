@@ -5,7 +5,7 @@ import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as stellar from './helpers/stellarHelper';
-import { hasLoaded, loadAccount, setTrustlines } from '../../../store/actions';
+import { hasLoaded, loadAccount, setPrivkey, setPubkey } from '../../../store/actions';
 import AccountNotCreated from './AccountNotCreated';
 
 const mapStateToProps = state => {
@@ -20,7 +20,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = (dispatch) => bindActionCreators({
   hasLoaded: hasLoaded,
   loadAccount: loadAccount,
-  setTrustlines: setTrustlines
+  setPrivkey: setPrivkey,
+  setPubkey: setPubkey
 }, dispatch);
 
 class WalletSetup extends Component {
@@ -39,19 +40,31 @@ class WalletSetup extends Component {
     }
   }
 
+  componentWillMount() {
+    this.forceUpdate();
+  }
+
   loadAccount() {
     stellar.loadAccount(this.props.pubkey).then((acc) => {
       this.setState({ accountIsValid: true, loaded: true });
       this.props.hasLoaded(true);
       this.props.loadAccount(acc);
 
-      stellar.loadTrustlines(acc.balances).then(trustlines => {
+      /*stellar.loadTrustlines(acc.balances).then(trustlines => {
         this.props.setTrustlines(trustlines);
-      });
+      });*/
     }).catch((e) => {
-      //console.log(e);
-      this.setState({ accountIsValid: false, loaded: true });
-      this.props.hasLoaded(true);
+      console.log(e.message);
+      if (e.message == 'Error: Network Error') {
+        setTimeout(() => {
+          this.props.setPrivkey('');
+          this.props.setPubkey('');
+          M.toast({ html: 'Error: No network connection found', classes: 'error-toast' });
+        }, 1500);
+      } else {
+        this.setState({ accountIsValid: false, loaded: true });
+        this.props.hasLoaded(true);
+      }
     });
   }
 

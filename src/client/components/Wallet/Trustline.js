@@ -21,7 +21,7 @@ class Trustline extends Component {
           <a onClick={ this.deleteTrustline } style={{color: 'red'}}><i className="tiny material-icons">close</i></a>
         </div>
         </div>
-        <div className="balance">${ this.props.trustline.balance.slice(0, 4) }</div>
+        <div className="balance">${ this.props.trustline.balance.slice(0, this.props.trustline.balance.length - 5) }</div>
       </div>
     );
   }

@@ -84,7 +84,7 @@ class Pay extends Component {
             if (this.mounted) {
               this.setState({ loading: false, msg: '' });
             }
-            M.toast({ html: 'Error: There is no path for your asset to reach the specified user', classes: 'error-toast' });
+            M.toast({ html: 'Error: There is no payment path that reaches the specified account', classes: 'error-toast' });
           }
         }).catch(err => {
           console.log(err);
@@ -116,10 +116,10 @@ class Pay extends Component {
     }
     return (
       <div className="cp-container">
-        <div className="panel-container" style={{ marginLeft: "10%", marginRight: '10%' }}>
+        <div className="panel-container small">
           <div className="row panel-header">
             <h5>
-              Send Payment
+              Send Funds
             </h5>
           </div>
           <div className="row panel-content">
@@ -132,6 +132,7 @@ class Pay extends Component {
               </div>
               <div className="row">
                 <div className="input-field col s12">
+                  <i className="material-icons prefix">attach_money</i>
                   <input id="amount" type="text" className="validate" onChange={ this.handleChange } />
                   <label htmlFor="amount">Amount</label>
                 </div>
@@ -142,7 +143,7 @@ class Pay extends Component {
                     <input id="check" type="checkbox" className="filled-in" checked={ this.state.checked } onChange={ this.handleChange } />
                     <span>
                       <b>Warning:</b> Transactions on the Stellar network are irreversible.  Are
-                      you sure you want to broadcast this transaction?
+                      you sure you want to broadcast this payment?
                     </span>
                   </label>
                 </p>

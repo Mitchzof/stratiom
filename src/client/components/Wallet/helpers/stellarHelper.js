@@ -147,7 +147,13 @@ export const attemptPathPayment = (privkey, accountId, amount) => {
       return server.paths(keypair.publicKey(), accountId, destAsset, amount).call()
       .then(paths => {
         if (paths.records.length > 0) {
-          return paths.records[0];
+          for (var i = 0; i < paths.records.length; i++) {
+            if (paths.records[i].source_asset_code == 'STRTMUSD') {
+              return paths.records[i];
+            } else if (i == paths.records.length - 1) {
+              return [];
+            }
+          }
         } else {
           return [];
         }
@@ -190,4 +196,32 @@ const payWithPath = (privkey, paths, accountId, amount) => {
       return server.submitTransaction(transaction);
     });
   }
+}
+
+export const loadOffers = (pubkey) => {
+  return server.loadAccount(pubkey)
+  .then((account) => {
+    acc = account;
+    return server.offers('accounts', acc.account_id).call()
+  }).then(offers => {
+    console.log(offers);
+  });
+}
+
+export const settleDebt = (privkey, accountId, amount) => {
+  let keypair = StellarSdk.Keypair.fromSecret(privkey);
+  let debtAsset = new StellarSdk.Asset('STRTMUSD', accountId);
+
+  return server.loadAccount(keypair.publicKey())
+  .then(acc => {
+    var transaction = new StellarSdk.TransactionBuilder(acc)
+      .addOperation(StellarSdk.Operation.payment({
+        destination: accountId,
+        asset: debtAsset,
+        amount: amount
+      }))
+      .build();
+    transaction.sign(keypair);
+    return server.submitTransaction(transaction);
+  });
 }

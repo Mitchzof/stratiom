@@ -9,7 +9,7 @@ class OfferModal extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.state = {
-      amount: "1000.00",
+      amount: "10000.00",
       price: "1",
       checked: false,
       loading: false
@@ -35,7 +35,7 @@ class OfferModal extends Component {
           this.props.clear();
           instance.close();
         }
-        M.toast({ html: 'Error: You already have an active offer', classes: 'error-toast' });
+        M.toast({ html: 'You already have an offer for this asset', classes: 'success-toast' });
       }
     }).catch(err => {
       if (this.mounted) {
@@ -86,8 +86,10 @@ class OfferModal extends Component {
             <div className="row">
               <h6><b>Payment Mediation (Recommended)</b></h6>
               <p>
-                By creating this offer, your account may passively mediate payments for
-                this trustline.
+                This will create a passive order on the SDEX.  By creating this order,
+                your account may passively mediate payments and send path payments through this trustline.
+                Note that once the total amount specified has been mediated, a new offer must
+                be created.
               </p>
             </div>
             <div className="row">
@@ -101,9 +103,10 @@ class OfferModal extends Component {
                 <i className="material-icons prefix">attach_money</i>
                 <input value={ this.state.amount } id="amount" type="text" className="validate" onChange={ this.handleChange } />
                 <label className="active" htmlFor="amount">Amount</label>
+                <span className="helper-text">The total amount you are willing to mediate</span>
               </div>
               <div className="input-field col s6" style={{ paddingLeft: '15px' }}>
-                <input value={ this.state.price } id="price" type="text" className="validate" onChange={ this.handleChange } />
+                <input disabled value={ this.state.price } id="price" type="text" className="validate" onChange={ this.handleChange } />
                 <label className="active" htmlFor="price">Price</label>
                 <span className="helper-text">The ratio of the trustline{'\''}s USD to your USD</span>
               </div>

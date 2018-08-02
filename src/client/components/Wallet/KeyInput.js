@@ -48,9 +48,9 @@ class KeyInput extends Component {
         <div className="privkey-panel valign-wrapper">
           <form className="col s10 offset-s1" onSubmit={ this.handleSubmit }>
             <div className="row center-align">
-              <p style={{ marginTop: '40px', fontSize: '2.2vh' }}>
+              <h6 style={{ marginTop: '40px' }}>
                 Enter your secret key to access the dashboard.
-              </p>
+              </h6>
               <div className="input-field col s12">
                 <input id="privkey" type="password" className="validate" onChange={ this.handleChange } />
                 <label htmlFor="privkey">Private Key</label>

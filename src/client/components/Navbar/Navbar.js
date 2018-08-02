@@ -60,7 +60,7 @@ class Navbar extends Component {
             <ul id="nav-mobile" className="right" style={{marginRight: '50px'}}>
               <li><Link to="/wallet">
                 <div style={{color: this.state.color}}>
-                  Login
+                  Account
                 </div>
               </Link></li>
             </ul>

@@ -82,6 +82,19 @@
 	}
 }
 
+.vertical-center {
+	display: flex;
+	justify-content: center;
+}
+
+.input-offset {
+	margin-top: calc(5vh + 100px);
+
+	@media #{$small-and-down} {
+		margin-top: 90px;
+	}
+}
+
 .selection-container {
 	height: 50px;
 	display: flex;

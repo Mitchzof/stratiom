@@ -34,8 +34,8 @@ class KeyContainer extends Component {
 
   render() {
     return (
-      <div className="container valign-wrapper" style={{ minHeight: '100vh' }}>
-        <div className="row">
+      <div className="container vertical-center" style={{ minHeight: '100vh' }}>
+        <div className="row input-offset">
           <div className="col s12">
             <div className="row">
               <div className="col">

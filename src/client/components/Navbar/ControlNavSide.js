@@ -13,9 +13,10 @@ class ControlNavSide extends Component {
           Wallet
         </div>
         <li><Link to="/wallet">Overview</Link></li>
+        <li><Link to="/wallet/pay">Send Funds</Link></li>
+        <li><Link to="/wallet/txhistory">Transaction History</Link></li>
         <li><Link to="/wallet/trustline">Add Trust</Link></li>
         <li><Link to="/wallet/trustlines">Manage Trust</Link></li>
-        <li><Link to="/wallet/pay">Send Funds</Link></li>
       </ul>
     );
   }

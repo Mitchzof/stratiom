@@ -11,7 +11,7 @@ import {
 const server = express();
 
 //Redis Store
-let RedisStore = connectRedis(session);
+/*let RedisStore = connectRedis(session);
 let options = {
   host: 'localhost',
   port: 6379
@@ -30,7 +30,7 @@ let sess = {
 if (process.env.NODE_ENV === 'production') {
   sess.cookie.secure = true;
 }
-server.use(session(sess));
+server.use(session(sess));*/
 
 //Set bodyparser and static folder
 server.use(bodyParser.json());
