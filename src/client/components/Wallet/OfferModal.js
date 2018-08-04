@@ -94,6 +94,7 @@ class OfferModal extends Component {
             </div>
             <div className="row">
               <div className="input-field col s12">
+                <i className="material-icons prefix">person</i>
                 <input disabled value={ this.props.accountId } id="accountId" type="text" className="validate" onChange={ this.handleChange } />
                 <label className="active" htmlFor="accountid">Account ID</label>
               </div>

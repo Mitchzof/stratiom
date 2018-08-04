@@ -18,7 +18,8 @@ class IOU extends Component {
   }
 
   max(e) {
-    this.setState({ amount: this.props.balance })
+    this.setState({ amount: this.props.balance });
+    M.updateTextFields();
   }
 
   expand(e) {
@@ -65,46 +66,38 @@ class IOU extends Component {
   render() {
     var content;
 
-    if (this.state.expanded) {
-      if (this.state.loading) {
-        content = <div className="iou-expansion">
-          <div className="loader-container" style={{ marginTop: '50px', marginBottom: '50px' }}>
-            <Loader />
-          </div>
+    if (this.state.loading) {
+      content = <div className="loader-container" style={{ marginTop: '50px', marginBottom: '50px' }}>
+          <Loader />
         </div>
-      } else {
-        content = <div className="iou-expansion">
-          <form className="col s10 offset-s1" onSubmit={ this.handleSubmit }>
-            <div className="row valign-wrapper">
-              <div className="input-field col s6 offset-s2">
-                <i className="material-icons prefix">attach_money</i>
-                <input id="amount" type="text" className="validate" value={ this.state.amount } onChange={ this.handleChange } style={{ borderBottom: '1px solid #505558' }} />
-                <label className="active" htmlFor="amount" style={{ color: '#505558' }}>Amount</label>
-                <span className="helper-text">Debt to be cleared</span>
-              </div>
-              <a className="waves-effect waves-light btn-small" onClick={ this.max } style={{ marginLeft: '15px' }}>Max</a>
-            </div>
-            <div className="row center-align">
-              <p>
-                <label>
-                  <input id="check" type="checkbox" className="filled-in" checked={ this.state.checked } onChange={ this.handleChange } />
-                  <span style={{ color: '#505558' }}>
-                    <b>Warning:</b> Are you sure you want to do this?  This action will be
-                    broadcast to the Stellar network and is irreversible.
-                  </span>
-                </label>
-              </p>
-            </div>
-            <div className="center-align" style={{ marginBottom: '25px' }}>
-              <button type="submit" className={
-                (this.state.amount && this.state.checked) ? "btn waves-effect waves-light btn-primary" : "btn disabled iou-disabled-button"
-              }>Send</button>
-            </div>
-          </form>
-        </div>;
-      }
     } else {
-      content = <div></div>;
+      content = <form className="col s10 offset-s1" onSubmit={ this.handleSubmit }>
+          <div className="row valign-wrapper">
+            <div className="input-field col s6 offset-s2">
+              <i className="material-icons prefix">attach_money</i>
+              <input id="amount" type="text" className="validate" value={ this.state.amount } onChange={ this.handleChange } style={{ borderBottom: '1px solid #505558' }} />
+              <label className={ (this.state.amount) ? 'active' : '' } htmlFor="amount" style={{ color: '#505558' }}>Amount</label>
+              <span className="helper-text">Debt to be cleared</span>
+            </div>
+            <a className="waves-effect waves-light btn-small" onClick={ this.max } style={{ marginLeft: '15px' }}>Max</a>
+          </div>
+          <div className="row center-align">
+            <p>
+              <label>
+                <input id="check" type="checkbox" className="filled-in" checked={ this.state.checked } onChange={ this.handleChange } />
+                <span style={{ color: '#505558' }}>
+                  <b>Warning:</b> Are you sure you want to do this?  This action will be
+                  broadcast to the Stellar network and is irreversible.
+                </span>
+              </label>
+            </p>
+          </div>
+          <div className="center-align" style={{ marginBottom: '25px' }}>
+            <button type="submit" className={
+              (this.state.amount && this.state.checked) ? "btn waves-effect waves-light btn-primary" : "btn disabled iou-disabled-button"
+            }>Send</button>
+          </div>
+        </form>;
     }
 
     return (
@@ -124,7 +117,9 @@ class IOU extends Component {
             }
           </a>
         </div>
-        { content }
+        <div className="iou-expansion" style={{ maxHeight: (this.state.expanded) ? '500px' : '0px' }}>
+          { content }
+        </div>
       </div>
     );
   }

@@ -38,10 +38,16 @@ class WalletSetup extends Component {
       accountIsValid: true,
       redirect: redirect
     }
+
+    this.accountLoader = setInterval(this.loadAccount, 5000);
   }
 
   componentWillMount() {
     this.forceUpdate();
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.accountLoader);
   }
 
   loadAccount() {
@@ -49,13 +55,11 @@ class WalletSetup extends Component {
       this.setState({ accountIsValid: true, loaded: true });
       this.props.hasLoaded(true);
       this.props.loadAccount(acc);
-
       /*stellar.loadTrustlines(acc.balances).then(trustlines => {
         this.props.setTrustlines(trustlines);
       });*/
     }).catch((e) => {
-      console.log(e.message);
-      if (e.message == 'Error: Network Error') {
+      if (e.message == 'Error: No Network Connection') {
         setTimeout(() => {
           this.props.setPrivkey('');
           this.props.setPubkey('');
@@ -92,7 +96,6 @@ class WalletSetup extends Component {
     } else {
       return (
         <div style={{ width: '100%', height: '100%' }}>
-          { console.log(this.props.account) }
           { this.props.children }
         </div>
       );

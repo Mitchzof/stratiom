@@ -4,12 +4,14 @@ import Loader from '../Misc/Loader';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { loadAccount as loadAccountAC } from '../../../store/actions';
+import TrustlineModal from './TrustlineModal';
 
 const mapStateToProps = state => {
   return {
     privkey: state.user.privkey,
     pubkey: state.user.pubkey,
-    trustlines: state.user.trustlines
+    trustlines: state.user.trustlines,
+    account: state.user.account
   }
 }
 
@@ -22,15 +24,23 @@ class Pay extends Component {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.selectTrustline = this.selectTrustline.bind(this);
+    this.fill = this.fill.bind(this);
     this.state = {
       checked: false,
       loading: false,
-      msg: ''
+      accountId: '',
+      msg: '',
+      memo: ''
     };
   }
 
   componentDidMount() {
     this.mounted = true;
+
+    let elem = document.getElementById('trustlinemodal');
+    M.Modal.init(elem);
+    this.instance = M.Modal.getInstance(elem);
   }
 
   componentWillUnmount() {
@@ -45,6 +55,14 @@ class Pay extends Component {
     }
   }
 
+  fill(accountId) {
+    this.setState({ accountId: accountId });
+  }
+
+  selectTrustline() {
+    this.instance.open();
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     this.setState({ loading: true });
@@ -55,7 +73,7 @@ class Pay extends Component {
         if (this.mounted) {
           this.setState({ msg: 'Direct trustline connection found.  Sending payment.' });
         }
-        stellar.issueAssets(this.props.privkey, this.state.accountId, this.state.amount)
+        stellar.issueAssets(this.props.privkey, this.state.accountId, this.state.amount, this.state.memo)
         .then(res => {
           if (this.mounted) {
             this.setState({ loading: false, msg: '' });
@@ -65,13 +83,14 @@ class Pay extends Component {
           if (this.mounted) {
             this.setState({ loading: false, msg: '' });
           }
+          console.log(err);
           M.toast({ html: 'Error: Payment failed to send', classes: 'error-toast' });
         });
       } else {
         if (this.mounted) {
           this.setState({ msg: 'No direct trustline connection found.  Attempting path payment.' });
         }
-        stellar.attemptPathPayment(this.props.privkey, this.state.accountId, this.state.amount)
+        stellar.attemptPathPayment(this.props.privkey, this.state.accountId, this.state.amount, this.state.memo)
         .then(res => {
           if (res) {
             if (this.mounted) {
@@ -124,20 +143,29 @@ class Pay extends Component {
           </div>
           <div className="row panel-content">
             <form className="col s10 offset-s1" onSubmit={ this.handleSubmit }>
-              <div className="row">
-                <div className="input-field col s12">
-                  <input id="accountId" type="text" className="validate" onChange={ this.handleChange } />
-                  <label htmlFor="accountId">Account ID</label>
+              <div className="row valign-wrapper">
+                <div className="input-field col s12" style={{ marginLeft: '0px' }}>
+                  <i className="material-icons prefix">person</i>
+                  <input id="accountId" type="text" value={ this.state.accountId } className="validate" onChange={ this.handleChange } />
+                  <label className={ (this.state.accountId) ? 'active' : '' } htmlFor="accountId">Account ID</label>
                 </div>
+                <a onClick={ this.selectTrustline } className="waves-effect waves-light btn-small" style={{ marginLeft: '15px', padding: '0px 10px 0px 10px', width: '70px' }}>Select</a>
               </div>
-              <div className="row">
+              <div className="row valign-wrapper">
                 <div className="input-field col s12">
                   <i className="material-icons prefix">attach_money</i>
                   <input id="amount" type="text" className="validate" onChange={ this.handleChange } />
                   <label htmlFor="amount">Amount</label>
                 </div>
               </div>
-              <div className="row">
+              <div className="row valign-wrapper">
+                <div className="input-field col s12">
+                  <i className="material-icons prefix"></i>
+                  <input id="memo" type="text" className="validate" onChange={ this.handleChange } />
+                  <label htmlFor="memo">Note (optional)</label>
+                </div>
+              </div>
+              <div className="row valign-wrapper">
                 <p>
                   <label>
                     <input id="check" type="checkbox" className="filled-in" checked={ this.state.checked } onChange={ this.handleChange } />
@@ -156,6 +184,7 @@ class Pay extends Component {
             </form>
           </div>
         </div>
+        <TrustlineModal balances={ this.props.account.balances } fill={ this.fill } />
       </div>
     );
   }

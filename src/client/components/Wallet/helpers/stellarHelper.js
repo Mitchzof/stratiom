@@ -6,6 +6,11 @@ export const loadAccount = (pubkey) => {
   return server.loadAccount(pubkey);
 }
 
+export const privkeyToPubkey = (privkey) => {
+  let keypair = StellarSdk.Keypair.fromSecret(privkey);
+  return keypair.publicKey();
+}
+
 export const loadTrustlines = (balances) => {
   let loadingPromise = new Promise((resolve, reject) => {
     setTimeout(() => {
@@ -111,7 +116,7 @@ export const checkTrustlines = (pubkey, accountId) => {
   });
 }
 
-export const issueAssets = (privkey, accountId, amount) => {
+export const issueAssets = (privkey, accountId, amount, note) => {
   let keypair = StellarSdk.Keypair.fromSecret(privkey);
   let debtAsset = new StellarSdk.Asset('STRTMUSD', keypair.publicKey());
 
@@ -122,14 +127,21 @@ export const issueAssets = (privkey, accountId, amount) => {
         destination: accountId,
         asset: debtAsset,
         amount: amount
-      }))
-      .build();
-    transaction.sign(keypair);
-    return server.submitTransaction(transaction);
+      }));
+    if (note) {
+      let memo = new StellarSdk.Memo("text", note);
+      transaction = transaction.addMemo(memo).build();
+      transaction.sign(keypair);
+      return server.submitTransaction(transaction);
+    } else {
+      transaction = transaction.build();
+      transaction.sign(keypair);
+      return server.submitTransaction(transaction);
+    }
   });
 }
 
-export const attemptPathPayment = (privkey, accountId, amount) => {
+export const attemptPathPayment = (privkey, accountId, amount, note) => {
   let keypair = StellarSdk.Keypair.fromSecret(privkey);
 
   return server.loadAccount(accountId)
@@ -164,16 +176,17 @@ export const attemptPathPayment = (privkey, accountId, amount) => {
   }).then(unflattenedPaths => {
     return [].concat.apply([], unflattenedPaths);
   }).then(paths => {
-    return payWithPath(
+    return pathPayment(
       privkey,
       paths,
       accountId,
-      amount
+      amount,
+      note
     );
   });
 }
 
-const payWithPath = (privkey, paths, accountId, amount) => {
+const pathPayment = (privkey, paths, accountId, amount, note) => {
   if (paths.length == 0) {
     return false;
   } else {
@@ -191,7 +204,12 @@ const payWithPath = (privkey, paths, accountId, amount) => {
           destAmount: amount,
           path: path.path.map(asset => new StellarSdk.Asset(asset.asset_code, asset.asset_issuer))
         }))
-        .build();
+      if (note) {
+        let memo = new StellarSdk.Memo("text", note);
+        transaction = transaction.addMemo(memo).build();
+      } else {
+        transaction = transaction.build();
+      }
       transaction.sign(keypair);
       return server.submitTransaction(transaction);
     });
@@ -219,6 +237,21 @@ export const settleDebt = (privkey, accountId, amount) => {
         destination: accountId,
         asset: debtAsset,
         amount: amount
+      }))
+      .build();
+    transaction.sign(keypair);
+    return server.submitTransaction(transaction);
+  });
+}
+
+export const setInflation = (privkey, accountId) => {
+  let keypair = StellarSdk.Keypair.fromSecret(privkey);
+
+  return server.loadAccount(keypair.publicKey())
+  .then(acc => {
+    var transaction = new StellarSdk.TransactionBuilder(acc)
+      .addOperation(StellarSdk.Operation.setOptions({
+        inflationDest: accountId
       }))
       .build();
     transaction.sign(keypair);

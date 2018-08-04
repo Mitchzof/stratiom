@@ -43,7 +43,7 @@ class Overview extends Component {
     return (
       <div className="cp-container">
         <div className="overview-panel-container">
-          <Stats accountId={ this.props.account.account_id } inflation={ this.props.account.inflation_destination } />
+          <Stats accountId={ this.props.account.account_id } inflation={ this.props.account.inflation_destination } privkey={ this.props.privkey } loadAccount={ this.props.loadAccount } />
           <Balances xlm={ this.xlm } debts={ this.debts } />
         </div>
         <IOUManager />

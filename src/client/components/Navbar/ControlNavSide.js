@@ -12,11 +12,21 @@ class ControlNavSide extends Component {
         <div className="info-block">
           Wallet
         </div>
-        <li><Link to="/wallet">Overview</Link></li>
-        <li><Link to="/wallet/pay">Send Funds</Link></li>
-        <li><Link to="/wallet/txhistory">Transaction History</Link></li>
-        <li><Link to="/wallet/trustline">Add Trust</Link></li>
-        <li><Link to="/wallet/trustlines">Manage Trust</Link></li>
+        <li><Link to="/wallet">
+          <i className="material-icons sidenav-icon">home</i>Overview
+        </Link></li>
+        <li><Link to="/wallet/pay">
+          <i className="material-icons sidenav-icon">send</i>Send Funds
+        </Link></li>
+        <li><Link to="/wallet/txhistory">
+          <i className="material-icons sidenav-icon">history</i>Transaction History
+        </Link></li>
+        <li><Link to="/wallet/trustline">
+          <i className="material-icons sidenav-icon">library_add</i>Add Trust
+        </Link></li>
+        <li><Link to="/wallet/trustlines">
+          <i className="material-icons sidenav-icon">portrait</i>Manage Trust
+        </Link></li>
       </ul>
     );
   }

@@ -12,7 +12,10 @@ const mapStateToProps = state => {
 class TransactionHistory extends Component {
   constructor(props) {
     super(props);
+    this.counter = 0;
     this.payments = [];
+    this.loadPayments = this.loadPayments.bind(this);
+    this.loadMemos = this.loadMemos.bind(this);
     this.state = {
       loading: true
     }
@@ -20,11 +23,41 @@ class TransactionHistory extends Component {
 
   componentDidMount() {
     this.mounted = true;
-    this.props.account.payments({ order: "desc", limit: 50 }).then(payments => {
-      this.payments = payments.records;
-      console.log(payments.next());
-      this.setState({ loading: false });
+    this.props.account.payments({ order: "desc", limit: 100 }).then(payments => {
+      this.loadPayments(payments);
+    }).catch(e => {
+      setTimeout(this.forceUpdate, 1500);
     })
+  }
+
+  loadPayments(payments) {
+    if (payments.records.length > 0) {
+      this.payments = this.payments.concat(payments.records);
+      payments.next().then(payments => {
+        this.loadPayments(payments);
+      })
+    } else {
+      this.loadMemos();
+    }
+  }
+
+  loadMemos() {
+    this.payments.forEach(tx => {
+      this.counter++;
+      if ((tx.type == 'payment' || tx.type == 'path_payment') && tx.asset_code == 'STRTMUSD') {
+        tx.transaction().then(data => {
+          if (data.memo) {
+            tx.memo = data.memo;
+            if (this.mounted) {
+              this.forceUpdate();
+            }
+          }
+        });
+      }
+      if (this.counter == this.payments.length && this.mounted) {
+        this.setState({ loading: false });
+      }
+    });
   }
 
   componentWillUnmount() {
@@ -35,14 +68,19 @@ class TransactionHistory extends Component {
     let rows = [];
 
     this.payments.forEach(tx => {
-      console.log(tx);
-      if (tx.from == this.props.account.account_id) {
-        tx.direction = 'out';
-      } else {
-        tx.direction = 'in';
-      }
-
       if ((tx.type == 'payment' || tx.type == 'path_payment') && tx.asset_code == 'STRTMUSD') {
+        if (tx.from == this.props.account.account_id) {
+          if (tx.asset_issuer == tx.to) {
+            tx.isRefund = true;
+          }
+          tx.direction = 'out';
+        } else {
+          if (tx.asset_issuer == this.props.account.account_id) {
+            tx.isRefund = true;
+          }
+          tx.direction = 'in';
+        }
+
         rows.push(<Transaction key={ tx.id } tx={ tx } />);
       }
     });
@@ -67,7 +105,7 @@ class TransactionHistory extends Component {
           </div>
           <div className="transaction-container">
             <div className="tx">
-            <div style={{width: '15%'}}></div>
+            <div style={{width: '10%'}}></div>
             <div style={{width: '20%'}}><p>Amount</p></div>
             <div style={{width: '20%'}}><p>Payment Type</p></div>
             <div style={{width: '20%'}}><p>Account</p></div>

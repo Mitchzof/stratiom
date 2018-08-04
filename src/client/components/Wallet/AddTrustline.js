@@ -117,6 +117,7 @@ class AddTrustline extends Component {
                   adjacent trustlines.
                 </p>
                 <div className="input-field col s12">
+                  <i className="material-icons prefix">person</i>
                   <input id="accountId" value={ this.state.accountId } type="text" className="validate" onChange={ this.handleChange } />
                   <label htmlFor="accountId">Account ID</label>
                 </div>
