@@ -7,7 +7,6 @@ class OfferModal extends Component {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.handleClose = this.handleClose.bind(this);
     this.state = {
       amount: "10000.00",
       price: "1",
@@ -45,10 +44,6 @@ class OfferModal extends Component {
       }
       M.toast({ html: 'Error: Offer creation failed', classes: 'error-toast' });
     })
-  }
-
-  handleClose() {
-    this.props.clear();
   }
 
   componentDidMount() {
@@ -102,7 +97,7 @@ class OfferModal extends Component {
             <div className="row">
               <div className="input-field col s6" style={{ paddingRight: '15px' }}>
                 <i className="material-icons prefix">attach_money</i>
-                <input value={ this.state.amount } id="amount" type="text" className="validate" onChange={ this.handleChange } />
+                <input value={ this.state.amount } id="amount" type="number" className="validate" onChange={ this.handleChange } />
                 <label className="active" htmlFor="amount">Amount</label>
                 <span className="helper-text">The total amount you are willing to mediate</span>
               </div>
@@ -128,7 +123,7 @@ class OfferModal extends Component {
           <button className={
             (this.state.checked) ? "btn waves-effect waves-light btn-primary" : "btn disabled"
           } onClick={ this.handleSubmit }>Submit</button>
-          <a className="modal-close waves-effect waves-green btn-flat" onClick={ this.handleClose }>Cancel</a>
+          <a className="modal-close waves-effect waves-green btn-flat">Cancel</a>
         </div>
       </div>
     );

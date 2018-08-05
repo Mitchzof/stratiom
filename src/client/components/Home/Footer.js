@@ -12,7 +12,7 @@ class Footer extends Component {
       <div className="footer">
         <div style={{ maxWidth: '75%' }}>
           <p>
-            Made with ❤️ in San Francisco
+            Developed by Mitchell Chase
           </p>
         </div>
         <div className="footer-link-container">

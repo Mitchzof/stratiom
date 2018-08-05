@@ -6,6 +6,88 @@ export const loadAccount = (pubkey) => {
   return server.loadAccount(pubkey);
 }
 
+export const loadXLMOffer = (accountId) => {
+  return server.loadAccount(accountId)
+  .then((acc) => {
+    return server.offers('accounts', acc.account_id).call()
+  }).then(offers => {
+    let xlmOffer = null
+    offers.records.forEach(offer => {
+      if (offer.buying.asset_issuer == accountId && offer.selling.asset_type == 'native') {
+        xlmOffer = offer;
+        console.log(offer);
+      }
+    });
+    return xlmOffer;
+  });
+}
+
+export const exchangeForXLM = (privkey, price, amount, accountId) => {
+  let keypair = StellarSdk.Keypair.fromSecret(privkey);
+  let selling = new StellarSdk.Asset('STRTMUSD', accountId);
+
+  return server.loadAccount(keypair.publicKey())
+  .then((acc) => {
+    var transaction = new StellarSdk.TransactionBuilder(acc)
+      .addOperation(StellarSdk.Operation.manageOffer({
+        selling: selling,
+        buying: StellarSdk.Asset.native(),
+        amount: amount,
+        price: price
+      }))
+      .build();
+    transaction.sign(keypair);
+    return server.submitTransaction(transaction);
+  });
+}
+
+export const linkXLM = (privkey, price, amount, offerId=null) => {
+  let keypair = StellarSdk.Keypair.fromSecret(privkey);
+  let buying = new StellarSdk.Asset('STRTMUSD', keypair.publicKey());
+  var acc = null;
+
+  return server.loadAccount(keypair.publicKey())
+  .then((account) => {
+    acc = account;
+    return server.offers('accounts', acc.account_id).call()
+  }).then(offers => {
+    let willCreateOffer = true;
+    offers.records.forEach(offer => {
+      if (offer.buying.asset_issuer == buying.issuer) {
+        willCreateOffer = false;
+      }
+    });
+    return willCreateOffer;
+  }).then(canCreate => {
+    if (offerId) {
+      var transaction = new StellarSdk.TransactionBuilder(acc)
+        .addOperation(StellarSdk.Operation.manageOffer({
+          selling: StellarSdk.Asset.native(),
+          buying: buying,
+          amount: amount,
+          price: price,
+          offerId: offerId
+        }))
+        .build();
+      transaction.sign(keypair);
+      return server.submitTransaction(transaction);
+    } else if (canCreate) {
+      var transaction = new StellarSdk.TransactionBuilder(acc)
+        .addOperation(StellarSdk.Operation.manageOffer({
+          selling: StellarSdk.Asset.native(),
+          buying: buying,
+          amount: amount,
+          price: price
+        }))
+        .build();
+      transaction.sign(keypair);
+      return server.submitTransaction(transaction);
+    } else {
+      return false;
+    }
+  });
+}
+
 export const deleteOffer = (privkey, offerId, issuer) => {
   let keypair = StellarSdk.Keypair.fromSecret(privkey);
   let selling = new StellarSdk.Asset('STRTMUSD', keypair.publicKey());

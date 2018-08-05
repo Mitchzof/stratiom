@@ -11,3 +11,9 @@ $black-text: #505558;
   color: #505558;
   display: flex;
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}

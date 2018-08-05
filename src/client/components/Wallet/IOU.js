@@ -9,6 +9,7 @@ class IOU extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.max = this.max.bind(this);
+    this.xlmExchange = this.xlmExchange.bind(this);
     this.state = {
       expanded: false,
       loading: false,
@@ -34,6 +35,31 @@ class IOU extends Component {
     this.mounted = false;
   }
 
+  xlmExchange() {
+    this.setState({ loading: true });
+    stellar.loadXLMOffer(this.props.issuer).then(offer => {
+      if (offer) {
+        if ( this.mounted ) {
+          this.setState({ loading: false });
+        }
+        if (parseFloat(this.state.amount) / parseFloat(offer.price) > parseFloat(offer.amount)) {
+          M.toast({ html: 'Error: The target user only has ' + offer.amount + ' XLM up for exchange.', classes: 'error-toast' });
+        } else {
+          this.props.setXLMOffer(offer, this.state.amount);
+          M.Modal.getInstance(document.getElementById('settlementmodal')).open();
+        }
+      } else {
+        M.toast({ html: 'Error: User does not support XLM settlement', classes: 'error-toast' });
+      }
+    }).catch(e => {
+      if (this.mounted) {
+        this.setState({ loading: true });
+      }
+      console.log(e);
+      M.toast({ html: 'Error: Failed to load offers from network', classes: 'error-toast' });
+    });
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     this.setState({ loading: true });
@@ -46,7 +72,6 @@ class IOU extends Component {
         });
       }
       M.toast({ html: 'Success: Transaction submitted', classes: 'success-toast' });
-
     }).catch(err => {
       if (this.mounted) {
         this.setState({ loading: false, amount: '' });
@@ -71,11 +96,11 @@ class IOU extends Component {
           <Loader />
         </div>
     } else {
-      content = <form className="col s10 offset-s1" onSubmit={ this.handleSubmit }>
+      content = <form className="col s10 offset-s1">
           <div className="row valign-wrapper">
             <div className="input-field col s6 offset-s2">
               <i className="material-icons prefix">attach_money</i>
-              <input id="amount" type="text" className="validate" value={ this.state.amount } onChange={ this.handleChange } style={{ borderBottom: '1px solid #505558' }} />
+              <input id="amount" type="number" className="validate" value={ this.state.amount } onChange={ this.handleChange } style={{ borderBottom: '1px solid #505558' }} />
               <label className={ (this.state.amount) ? 'active' : '' } htmlFor="amount" style={{ color: '#505558' }}>Amount</label>
               <span className="helper-text">Debt to be cleared</span>
             </div>
@@ -93,9 +118,12 @@ class IOU extends Component {
             </p>
           </div>
           <div className="center-align" style={{ marginBottom: '25px' }}>
-            <button type="submit" className={
+            <button onClick={ this.handleSubmit } className={
               (this.state.amount && this.state.checked) ? "btn waves-effect waves-light btn-primary" : "btn disabled iou-disabled-button"
-            }>Send</button>
+            } style={{ marginRight: '15px' }}>Send</button>
+            <a onClick={ this.xlmExchange } className={
+              (this.state.amount && this.state.checked) ? "btn waves-effect waves-light btn-primary" : "btn disabled iou-disabled-button"
+            } style={{ marginLeft: '15px' }}>Settle for XLM</a>
           </div>
         </form>;
     }

@@ -60,6 +60,10 @@ class Pay extends Component {
   }
 
   selectTrustline() {
+    let elem = document.getElementById('trustlinemodal');
+    M.Modal.init(elem);
+    this.instance = M.Modal.getInstance(elem);
+
     this.instance.open();
   }
 
@@ -84,7 +88,11 @@ class Pay extends Component {
             this.setState({ loading: false, msg: '', accountId: '' });
           }
           console.log(err);
-          M.toast({ html: 'Error: Payment failed to send', classes: 'error-toast' });
+          if (err.message.startsWith('Text should be')) {
+            M.toast({ html: 'Error: Note is too long', classes: 'error-toast' });
+          } else {
+            M.toast({ html: 'Error: Payment failed to send', classes: 'error-toast' });
+          }
         });
       } else {
         if (this.mounted) {
@@ -96,17 +104,16 @@ class Pay extends Component {
             if (this.mounted) {
               this.setState({ loading: false, msg: '', accountId: '' });
             }
-            console.log(res);
             M.toast({ html: 'Success: Payment has been sent', classes: 'success-toast' });
           } else {
-            console.log(res);
             if (this.mounted) {
               this.setState({ loading: false, msg: '', accountId: '' });
             }
             M.toast({ html: 'Error: There is no payment path that reaches the specified account', classes: 'error-toast' });
           }
         }).catch(err => {
-          console.log(err);
+          console.log(err.data);
+          console.log(err.message);
           if (this.mounted) {
             this.setState({ loading: false, msg: '', accountId: '' });
           }
@@ -154,14 +161,14 @@ class Pay extends Component {
               <div className="row valign-wrapper">
                 <div className="input-field col s12">
                   <i className="material-icons prefix">attach_money</i>
-                  <input id="amount" type="text" className="validate" onChange={ this.handleChange } />
+                  <input id="amount" type="number" className="validate" onChange={ this.handleChange } />
                   <label htmlFor="amount">Amount</label>
                 </div>
               </div>
               <div className="row valign-wrapper">
                 <div className="input-field col s12">
                   <i className="material-icons prefix"></i>
-                  <input id="memo" type="text" className="validate" onChange={ this.handleChange } />
+                  <input id="memo" type="text" className="validate" onChange={ this.handleChange } maxLength="28"/>
                   <label htmlFor="memo">Note (optional)</label>
                 </div>
               </div>

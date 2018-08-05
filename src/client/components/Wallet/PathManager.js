@@ -60,6 +60,7 @@ class PathManager extends Component {
 
   clearFields() {
     this.setState({ loading: false });
+    this.offers = [];
     this.props.account.offers({ order: "desc", limit: 100 }).then(offers => {
       this.loadOffers(offers);
     }).catch(e => {
@@ -105,7 +106,6 @@ class PathManager extends Component {
             <h5>
               Payment Mediation Manager
             </h5>
-            <a className="btn-floating btn-small waves-effect waves-light" onClick={ this.openModal }><i className="material-icons">add</i></a>
           </div>
           <div className="content">
             { (rows.length > 0) ?
@@ -113,7 +113,7 @@ class PathManager extends Component {
                 <div className="offer-content info" style={{ width: '60%', minWidth: '75px' }}><p>Account</p></div>
                 <div className="offer-content info" style={{ width: '10%', minWidth: '75px' }}><p>Amount</p></div>
                 <div className="offer-content info" style={{ width: '5%', minWidth: '50px' }}><p>Price</p></div>
-                <div className="offer-content info" style={{ width: '15%', minWidth: '50px' }}><p>Date</p></div>
+                <div className="offer-content info" style={{ width: '15%', minWidth: '75px' }}><p>Date Created</p></div>
               </div> : <div></div>
             }
             {
@@ -122,6 +122,9 @@ class PathManager extends Component {
                 You are not currently mediating payments for any accounts</div>
               </div>
             }
+            <div className="passive-offer" style={{ display: 'flex', justifyContent: 'center', height: '60px' }}>
+              <a className="btn btn-small waves-effect waves-light" onClick={ this.openModal }><i className="material-icons">add</i></a>
+            </div>
           </div>
         </div>
         <CreateOfferModal target={ this.target } />
