@@ -14,6 +14,7 @@ import AddTrustline from './AddTrustline';
 import TrustManager from './TrustManager';
 import Pay from './Pay';
 import TransactionHistory from './TransactionHistory';
+import PathManager from './PathManager';
 
 const mapStateToProps = state => {
   return {
@@ -45,6 +46,7 @@ class Wallet extends Component {
               <Route path="/wallet/trustline" component={ AddTrustline } />
               <Route path="/wallet/trustlines" component={ TrustManager } />
               <Route path="/wallet/pay" component={ Pay } />
+              <Route path="/wallet/paths" component={ PathManager } />
               <Route path="/wallet/txhistory" component={ TransactionHistory } />
             </Switch>
           </WalletSetup>

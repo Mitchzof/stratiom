@@ -26,7 +26,7 @@ class Privacy extends Component {
                         informed about privacy policy changes.
                       </p>
                       <p>
-                        Stratiom does not track user actions.  The website does not contain
+                        Stratiom will store data locally to track initial visit.  The website does not contain
                         analytics scripts, nor does it store cookies.  Stratiom developers are not
                         able to view your private key.
                       </p>

@@ -54,7 +54,7 @@ class AddTrustline extends Component {
   handleSubmit(e) {
     e.preventDefault();
     try {
-      this.setState({ loading: true });
+      this.setState({ loading: true, checked: false });
 
       createTrustline(this.props.privkey, this.state.accountId).then(res => {
         loadAccount(this.props.pubkey).then(acc => {
@@ -112,14 +112,14 @@ class AddTrustline extends Component {
                   assets (debt) from another user.
                 </p>
                 <p>
-                  Upon creation of the trustline, it is suggested that you create an offer to participate in
-                  path payments.  Path payments allow your account to passively mediate payments between
-                  adjacent trustlines.
+                  Upon creation of the trustline, your account will authorize the target account
+                  to hold your debt asset.  If the trusted account has authorized receipt of their
+                  asset, you may enable payment mediation.
                 </p>
                 <div className="input-field col s12">
                   <i className="material-icons prefix">person</i>
                   <input id="accountId" value={ this.state.accountId } type="text" className="validate" onChange={ this.handleChange } />
-                  <label htmlFor="accountId">Account ID</label>
+                  <label className={ (this.state.accountId) ? 'active' : '' } htmlFor="accountId">Account ID</label>
                 </div>
               </div>
               <div className="row">

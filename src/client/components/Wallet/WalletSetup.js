@@ -7,6 +7,7 @@ import { bindActionCreators } from 'redux';
 import * as stellar from './helpers/stellarHelper';
 import { hasLoaded, loadAccount, setPrivkey, setPubkey } from '../../../store/actions';
 import AccountNotCreated from './AccountNotCreated';
+import FlagsNotSet from './FlagsNotSet';
 
 const mapStateToProps = state => {
   return {
@@ -52,6 +53,7 @@ class WalletSetup extends Component {
 
   loadAccount() {
     stellar.loadAccount(this.props.pubkey).then((acc) => {
+      console.log(acc);
       this.setState({ accountIsValid: true, loaded: true });
       this.props.hasLoaded(true);
       this.props.loadAccount(acc);
@@ -90,10 +92,16 @@ class WalletSetup extends Component {
     } else if (!this.props.account) {
       return (
         <div className="cp-container">
-          <AccountNotCreated loadAccount={this.loadAccount} />
+          <AccountNotCreated loadAccount={ this.loadAccount } />
         </div>
       );
-    } else {
+    } /* else if (!this.props.account.flags.auth_required || !this.props.account.flags.auth_revocable) {
+      return (
+        <div className="cp-container">
+          <FlagsNotSet loadAccount={ this.loadAccount } privkey={ this.props.privkey } />
+        </div>
+      );
+    } */ else {
       return (
         <div style={{ width: '100%', height: '100%' }}>
           { this.props.children }

@@ -6,6 +6,27 @@ export const loadAccount = (pubkey) => {
   return server.loadAccount(pubkey);
 }
 
+export const deleteOffer = (privkey, offerId, issuer) => {
+  let keypair = StellarSdk.Keypair.fromSecret(privkey);
+  let selling = new StellarSdk.Asset('STRTMUSD', keypair.publicKey());
+  let buying = new StellarSdk.Asset('STRTMUSD', issuer);
+
+  return server.loadAccount(keypair.publicKey())
+  .then((acc) => {
+    var transaction = new StellarSdk.TransactionBuilder(acc)
+      .addOperation(StellarSdk.Operation.manageOffer({
+        selling: selling,
+        buying: buying,
+        amount: '0',
+        price: 1,
+        offerId: offerId
+      }))
+      .build();
+    transaction.sign(keypair);
+    return server.submitTransaction(transaction);
+  });
+}
+
 export const privkeyToPubkey = (privkey) => {
   let keypair = StellarSdk.Keypair.fromSecret(privkey);
   return keypair.publicKey();
@@ -44,6 +65,21 @@ export const deleteTrustline = (privkey, accountId) => {
       .addOperation(StellarSdk.Operation.changeTrust({
         asset: debtAsset,
         limit: "0"
+      }))
+      .build();
+    transaction.sign(keypair);
+    return server.submitTransaction(transaction);
+  });
+}
+
+export const setFlags = (privkey) => {
+  let keypair = StellarSdk.Keypair.fromSecret(privkey);
+
+  return server.loadAccount(keypair.publicKey())
+  .then((acc) => {
+    var transaction = new StellarSdk.TransactionBuilder(acc)
+      .addOperation(StellarSdk.Operation.setOptions({
+        setFlags: StellarSdk.AuthRevocableFlag | StellarSdk.AuthRequiredFlag
       }))
       .build();
     transaction.sign(keypair);

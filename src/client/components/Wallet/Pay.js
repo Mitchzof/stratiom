@@ -65,7 +65,7 @@ class Pay extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.setState({ loading: true });
+    this.setState({ loading: true, checked: false });
 
     stellar.checkTrustlines(this.props.pubkey, this.state.accountId)
     .then(isTrusted => {
@@ -76,12 +76,12 @@ class Pay extends Component {
         stellar.issueAssets(this.props.privkey, this.state.accountId, this.state.amount, this.state.memo)
         .then(res => {
           if (this.mounted) {
-            this.setState({ loading: false, msg: '' });
+            this.setState({ loading: false, msg: '', accountId: '' });
           }
           M.toast({ html: 'Success: Payment has been sent', classes: 'success-toast' });
         }).catch(err => {
           if (this.mounted) {
-            this.setState({ loading: false, msg: '' });
+            this.setState({ loading: false, msg: '', accountId: '' });
           }
           console.log(err);
           M.toast({ html: 'Error: Payment failed to send', classes: 'error-toast' });
@@ -94,21 +94,21 @@ class Pay extends Component {
         .then(res => {
           if (res) {
             if (this.mounted) {
-              this.setState({ loading: false, msg: '' });
+              this.setState({ loading: false, msg: '', accountId: '' });
             }
             console.log(res);
             M.toast({ html: 'Success: Payment has been sent', classes: 'success-toast' });
           } else {
             console.log(res);
             if (this.mounted) {
-              this.setState({ loading: false, msg: '' });
+              this.setState({ loading: false, msg: '', accountId: '' });
             }
             M.toast({ html: 'Error: There is no payment path that reaches the specified account', classes: 'error-toast' });
           }
         }).catch(err => {
           console.log(err);
           if (this.mounted) {
-            this.setState({ loading: false, msg: '' });
+            this.setState({ loading: false, msg: '', accountId: '' });
           }
           M.toast({ html: 'Error: Payment failed to send', classes: 'error-toast' });
         });

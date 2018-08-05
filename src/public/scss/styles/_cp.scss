@@ -440,6 +440,83 @@
   }
 }
 
+.offer-container {
+  box-shadow: 0px 1px 0px 1px rgba(119, 119, 119, 0.1);
+  border-radius: 3px;
+
+  .offer-header {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding: 5px 10px 5px 10px;
+    border-bottom: 1px solid rgba(119, 119, 119, 0.08);
+    background-color: #fff;
+    border: 1px solid rgba(119, 119, 119, 0.08);
+  }
+
+  .content {
+    height: auto;
+    width: 100%;
+  }
+
+  .info {
+    width: auto;
+    @media #{$small-and-down} {
+      width: 60px !important;
+    }
+  }
+
+  .delete {
+    cursor: pointer;
+    padding-left: 5px;
+    color: $black-text;
+  }
+}
+
+.passive-offer {
+  word-wrap: break-word;
+  min-height: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 5px 0px 5px 0px;
+  flex-wrap: wrap;
+  border-top: 1px solid rgba(63, 123, 222, 0.35);
+  background: linear-gradient(to right, rgba(63, 123, 222, 0.2), rgba(63, 123, 222, 0.1));
+
+  @media #{$small-and-down} {
+    justify-content: space-between;
+  }
+
+  .offer-content {
+    padding: 0px 5px 0px 5px
+  }
+}
+
+.tutorial {
+  height: 400px !important;
+
+  .tutorial-blue {
+    text-align: left !important;
+    background-color: $logo;
+    color: white;
+    padding: 20px 20px 20px 20px;
+  }
+
+  .tutorial-dark {
+    text-align: left !important;
+    background-color: $bg-dark;
+    color: $bg-dark-text;
+    padding: 20px 20px 20px 20px;
+  }
+}
+
+.tutorial-carousel {
+  height: 400px !important;
+}
+
 #deletemodal {
   word-wrap: break-word;
   margin-left: calc(12% + 250px);
@@ -468,6 +545,24 @@
 }
 
 #trustlinemodal {
+  word-wrap: break-word;
+  margin-left: calc(12% + 250px);
+
+  @media #{$medium-and-down} {
+    margin-left: auto;
+  }
+}
+
+#xlmmodal {
+  word-wrap: break-word;
+  margin-left: calc(12% + 250px);
+
+  @media #{$medium-and-down} {
+    margin-left: auto;
+  }
+}
+
+#tutorial {
   word-wrap: break-word;
   margin-left: calc(12% + 250px);
 
