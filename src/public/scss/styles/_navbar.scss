@@ -2,6 +2,14 @@
   transition: background-color 200ms ease-in;
 }
 
+.nav-link-container {
+  margin-right: 50px;
+
+  @media #{$small-and-down} {
+    margin-right: 5px;
+  }
+}
+
 .cp-sidenav {
   width: 250px;
   background-color: $bg-dark;

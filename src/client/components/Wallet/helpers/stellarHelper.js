@@ -1,6 +1,6 @@
 const StellarSdk = require('stellar-sdk');
 StellarSdk.Network.useTestNetwork();
-const server = new StellarSdk.Server('https://horizon-testnet.stellar.org/');
+const server = new StellarSdk.Server((TESTNET) ? 'https://horizon-testnet.stellar.org/' : 'https://horizon.stellar.org/');
 
 export const loadAccount = (pubkey) => {
   return server.loadAccount(pubkey);
@@ -278,7 +278,7 @@ export const attemptPathPayment = (privkey, accountId, amount, note) => {
       .then(paths => {
         if (paths.records.length > 0) {
           for (var i = 0; i < paths.records.length; i++) {
-            if (paths.records[i].source_asset_code == 'STRTMUSD') {
+            if (paths.records[i].source_asset_code == 'STRTMUSD'  && paths.records[i].source_asset_issuer == keypair.publicKey()) {
               return paths.records[i];
             } else if (i == paths.records.length - 1) {
               return [];
@@ -294,6 +294,7 @@ export const attemptPathPayment = (privkey, accountId, amount, note) => {
   }).then(unflattenedPaths => {
     return [].concat.apply([], unflattenedPaths);
   }).then(paths => {
+    console.log(paths);
     return pathPayment(
       privkey,
       paths,

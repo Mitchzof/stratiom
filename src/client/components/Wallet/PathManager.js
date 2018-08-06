@@ -118,11 +118,11 @@ class PathManager extends Component {
             }
             {
               (rows.length > 0) ? rows :
-              <div className="row center-align"><div style={{ fontSize: '17px', backgroundColor: 'white', height: '100%', padding: '30px 0px 30px 0px'}}>
+              <div className="row center-align" style={{ marginBottom: '0px' }}><div style={{ fontSize: '17px', backgroundColor: 'white', height: '100%', padding: '30px 0px 30px 0px'}}>
                 You are not currently mediating payments for any accounts</div>
               </div>
             }
-            <div className="passive-offer" style={{ display: 'flex', justifyContent: 'center', height: '60px' }}>
+            <div className="passive-offer" style={{ background: 'white', borderTop: '1px solid rgba(119, 119, 119, 0.2)', display: 'flex', justifyContent: 'center', height: '60px' }}>
               <a className="btn btn-small waves-effect waves-light" onClick={ this.openModal }><i className="material-icons">add</i></a>
             </div>
           </div>

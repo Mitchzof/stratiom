@@ -78,7 +78,6 @@
 }
 
 .iou {
-  padding: 5px 10px 5px 10px;
   min-height: 40px;
   width: 100%;
   display: flex;
@@ -87,6 +86,8 @@
   justify-content: space-between;
   word-wrap: break-word;
   border-top: 1px solid rgba(63, 123, 222, 0.35);
+  padding-left: 10px;
+  padding-right: 10px;
   background: linear-gradient(to right, rgba(63, 123, 222, 0.2), rgba(63, 123, 222, 0.1));
 }
 
@@ -125,7 +126,6 @@
 }
 
 .iou-expansion {
-  padding: 5px 10px 5px 10px;
   width: 100%;
   overflow: hidden;
   transition: max-height 0.3s ease-in;

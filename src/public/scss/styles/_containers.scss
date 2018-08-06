@@ -14,11 +14,11 @@
   display: flex;
   align-items: center;
   background: linear-gradient(to right, rgba(48, 100, 186, 0.75), rgba(63, 123, 222, 0.75));
-  color: 'white';
+  color: white;
 
   .content{
     @include transform(skew(0deg, 10deg));
-		padding-left: 20vw;
+		padding-left: 10%;
 		padding-top: 100px;
   }
 }
@@ -60,18 +60,20 @@
 }
 
 .key-container {
+	margin: 0px 0px 0px 0px;
 	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	text-align: center;
 	height: 50px;
+	align-items: center;
 	width: 100%;
 	background-color: $bg;
 	border: 1px solid rgba(119, 119, 119, 0.08);
-	border-radius: 5px;
-	font-size: 17px;
-	padding-left: 5px;
+	border-radius: 3px;
 	overflow: scroll;
+
+	.content {
+		font-size: 17px;
+		margin-left: 5px;
+	}
 }
 
 .offset-nav {

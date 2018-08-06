@@ -45,3 +45,16 @@
   background-color: #cc0000;
   box-shadow: 1px 2px 1px 0px rgba(119, 119, 119, 0.15);
 }
+
+.hide-on-small {
+  width: auto;
+  overflow: hidden;
+
+  @media #{$small-and-down} {
+    width: 0px;
+  }
+}
+
+.selectable {
+  cursor: pointer;
+}

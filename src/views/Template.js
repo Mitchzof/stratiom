@@ -10,6 +10,7 @@ const Template = function (body, state) {
   <!DOCTYPE html>
   <html>
     <head>
+      <title>Stratiom</title>
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
       <link type="text/css" rel="stylesheet" href="/css/materialize.css"  media="screen,projection"/>

@@ -13,11 +13,25 @@ class Stats extends Component {
     M.Modal.init(elems);
   }
 
+  handleSelect(e) {
+    if (document.selection) {
+        var range = document.body.createTextRange();
+        range.moveToElementText(document.getElementById(e.target.id));
+        return range.select;
+    } else if (window.getSelection) {
+        var range = document.createRange();
+        range.selectNode(document.getElementById(e.target.id));
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+    }
+  }
+
   render() {
     return (
       <div className="account-info-container">
         <div className="header-container">
-          <div className="wrapper" style={{fontSize: '18px'}}><b>Account ID:</b> <a style={{fontSize: '15px'}}>{ this.props.accountId }</a></div>
+          <div className="wrapper" style={{fontSize: '18px'}}><b>Account ID:</b> <a id="account"
+          style={{fontSize: '15px', borderBottom: '1px dotted rgba(119, 119, 119, 0.4)'}} onClick={ this.handleSelect }>{ this.props.accountId }</a></div>
         </div>
         <div className="content">
           <div className="button-box">

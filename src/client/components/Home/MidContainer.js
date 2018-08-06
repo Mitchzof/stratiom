@@ -16,7 +16,9 @@ class MidContainer extends Component {
                 <div className="col s12">
                   <div className="row">
                     <p>
-                      To get started, click the "Login" link on the navbar.
+                      To get started, click the "Account" link on the navbar.  All user data is
+                      stored locally, and erased on refresh.  This means that Stratiom never sees
+                      your private keys or sensitive data.
                     </p>
                     <p>
                       Once you have logged in, <b>Stratiom</b> functions similarly to a normal wallet.
@@ -26,9 +28,12 @@ class MidContainer extends Component {
                     </p>
                     <p>
                       We encourage debts be settled via the native Stellar currency, Lumens,
-                      to insure an easier transaction flow.  However, debts can be settled with
-                      any asset on the Stellar DEX.
+                      to insure an easier transaction flow.  However, debts can be settled for fiat
+                      currency as well.
                     </p>
+                    {
+                      (TESTNET) ? '' : <p>Looking to test Stratiom?  Click <a href="https://testnet.stratiom.io">here</a> to use the testnet.</p>
+                    }
                   </div>
                 </div>
               </div>

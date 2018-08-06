@@ -14,12 +14,12 @@ class IOU extends Component {
       expanded: false,
       loading: false,
       checked: false,
-      amount: ''
+      [this.props.issuer]: ''
     }
   }
 
   max(e) {
-    this.setState({ amount: this.props.balance });
+    this.setState({ [this.props.issuer]: this.props.balance });
     M.updateTextFields();
   }
 
@@ -42,10 +42,10 @@ class IOU extends Component {
         if ( this.mounted ) {
           this.setState({ loading: false });
         }
-        if (parseFloat(this.state.amount) / parseFloat(offer.price) > parseFloat(offer.amount)) {
+        if (parseFloat(this.state[this.props.issuer]) / parseFloat(offer.price) > parseFloat(offer.amount)) {
           M.toast({ html: 'Error: The target user only has ' + offer.amount + ' XLM up for exchange.', classes: 'error-toast' });
         } else {
-          this.props.setXLMOffer(offer, this.state.amount);
+          this.props.setXLMOffer(offer, this.state[this.props.issuer]);
           M.Modal.getInstance(document.getElementById('settlementmodal')).open();
         }
       } else {
@@ -63,10 +63,10 @@ class IOU extends Component {
   handleSubmit(e) {
     e.preventDefault();
     this.setState({ loading: true });
-    stellar.settleDebt(this.props.privkey, this.props.issuer, this.state.amount)
+    stellar.settleDebt(this.props.privkey, this.props.issuer, this.state[this.props.issuer])
     .then(res => {
       if (this.mounted) {
-        this.setState({ loading: false, amount: '' });
+        this.setState({ loading: false, [this.props.issuer]: '' });
         stellar.loadAccount(this.props.pubkey).then(acc => {
           this.props.loadAccount(acc);
         });
@@ -74,7 +74,7 @@ class IOU extends Component {
       M.toast({ html: 'Success: Transaction submitted', classes: 'success-toast' });
     }).catch(err => {
       if (this.mounted) {
-        this.setState({ loading: false, amount: '' });
+        this.setState({ loading: false, [this.props.issuer]: '' });
       }
       M.toast({ html: 'Error: Transaction failed to submit', classes: 'error-toast' });
     });
@@ -97,11 +97,11 @@ class IOU extends Component {
         </div>
     } else {
       content = <form className="col s10 offset-s1">
-          <div className="row valign-wrapper">
-            <div className="input-field col s6 offset-s2">
+          <div className="row valign-wrapper" style={{ display: 'flex', justifyContent: 'center' }}>
+            <div className="input-field" style={{width: '60%'}}>
               <i className="material-icons prefix">attach_money</i>
-              <input id="amount" type="number" className="validate" value={ this.state.amount } onChange={ this.handleChange } style={{ borderBottom: '1px solid #505558' }} />
-              <label className={ (this.state.amount) ? 'active' : '' } htmlFor="amount" style={{ color: '#505558' }}>Amount</label>
+              <input id={ this.props.issuer } type="number" className="validate" value={ this.state[this.props.issuer] } onChange={ this.handleChange } style={{ borderBottom: '1px solid #505558' }} />
+              <label className={ (this.state[this.props.issuer]) ? 'active' : '' } htmlFor={ "" + this.props.issuer + "" } style={{ color: '#505558' }}>Amount</label>
               <span className="helper-text">Debt to be cleared</span>
             </div>
             <a className="waves-effect waves-light btn-small" onClick={ this.max } style={{ marginLeft: '15px' }}>Max</a>
@@ -119,18 +119,18 @@ class IOU extends Component {
           </div>
           <div className="center-align" style={{ marginBottom: '25px' }}>
             <button onClick={ this.handleSubmit } className={
-              (this.state.amount && this.state.checked) ? "btn waves-effect waves-light btn-primary" : "btn disabled iou-disabled-button"
+              (this.state[this.props.issuer] && this.state.checked) ? "btn waves-effect waves-light btn-primary" : "btn disabled iou-disabled-button"
             } style={{ marginRight: '15px' }}>Send</button>
             <a onClick={ this.xlmExchange } className={
-              (this.state.amount && this.state.checked) ? "btn waves-effect waves-light btn-primary" : "btn disabled iou-disabled-button"
+              (this.state[this.props.issuer] && this.state.checked) ? "btn waves-effect waves-light btn-primary" : "btn disabled iou-disabled-button"
             } style={{ marginLeft: '15px' }}>Settle for XLM</a>
           </div>
         </form>;
     }
 
     return (
-      <div>
-        <div className="iou" id={ this.props.issuer }>
+      <div id={ this.props.issuer }>
+        <div className="iou">
           <div style={{maxWidth: '100%'}}><p><b>Account:</b> { this.props.issuer }</p></div>
           <div>
             <p><b>Owes You:</b>

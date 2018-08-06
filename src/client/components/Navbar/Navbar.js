@@ -54,10 +54,10 @@ class Navbar extends Component {
           <div className="nav-wrapper">
             <Link to="/">
               <div className="brand-logo logo-container" style={{color: this.state.color}}>
-                Stratiom
+                Stratiom { (TESTNET) ? <b style={{ fontWeight: '300', fontSize: '10px' }}>Testnet</b> : '' }
               </div>
             </Link>
-            <ul id="nav-mobile" className="right" style={{marginRight: '50px'}}>
+            <ul id="nav-mobile nav-link-container" className="right">
               <li><Link to="/wallet">
                 <div style={{color: this.state.color}}>
                   Account

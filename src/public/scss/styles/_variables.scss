@@ -15,5 +15,20 @@ $black-text: #505558;
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
     margin: 0;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
+input[type="number"] + label {
+    pointer-events: none;
+
+    * {
+        pointer-events: all;
+    }
 }

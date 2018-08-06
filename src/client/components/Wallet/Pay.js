@@ -88,6 +88,7 @@ class Pay extends Component {
             this.setState({ loading: false, msg: '', accountId: '' });
           }
           console.log(err);
+          console.log('here');
           if (err.message.startsWith('Text should be')) {
             M.toast({ html: 'Error: Note is too long', classes: 'error-toast' });
           } else {

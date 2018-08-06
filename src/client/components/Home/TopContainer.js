@@ -9,10 +9,10 @@ class TopContainer extends Component {
             <div className="col s12">
               <div className="row">
                 <h4>What Is Stratiom?</h4>
-                <div className="col s6">
+                <div className="col s7">
                   <div className="row">
                     <p>
-                      <b>Stratiom</b> is a peer-to-peer, open source, web-based wallet for the Stellar Network.
+                      <b>Stratiom</b> is a peer-to-peer, web-based wallet for the Stellar Network.
                     </p>
                     <p>
                       The platform is a user interface that interacts with the Stellar

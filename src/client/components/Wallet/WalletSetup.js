@@ -39,12 +39,6 @@ class WalletSetup extends Component {
       accountIsValid: true,
       redirect: redirect
     }
-
-    this.accountLoader = setInterval(this.loadAccount, 5000);
-  }
-
-  componentWillMount() {
-    this.forceUpdate();
   }
 
   componentWillUnmount() {
@@ -74,6 +68,7 @@ class WalletSetup extends Component {
   }
 
   componentDidMount() {
+    this.accountLoader = setInterval(this.loadAccount, 5000);
     if (!this.props.loaded) {
       this.loadAccount();
     }
@@ -91,7 +86,7 @@ class WalletSetup extends Component {
     } else if (!this.props.account) {
       return (
         <div className="cp-container">
-          <AccountNotCreated loadAccount={ this.loadAccount } />
+          <AccountNotCreated loadAccount={ this.loadAccount } pubkey={ this.props.pubkey } />
         </div>
       );
     } /* else if (!this.props.account.flags.auth_required || !this.props.account.flags.auth_revocable) {

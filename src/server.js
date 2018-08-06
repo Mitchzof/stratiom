@@ -1,14 +1,16 @@
 //Dependencies
 import {
   express, React, renderToString, StaticRouter, Template, routes, preload,
-  reducer, createStore, Provider, matchPath, App, bodyParser, http, https,
-  session, redis, connectRedis, loginSuccess, loginError
+  reducer, createStore, Provider, matchPath, App, http, https, fs,
+  loginSuccess, loginError
 } from './imports';
 
 //import config from './config';
 
 //Server initialization
 const server = express();
+var privateKey = fs.readFileSync( './key.pem' );
+var certificate = fs.readFileSync( './cert.pem' );
 
 //Redis Store
 /*let RedisStore = connectRedis(session);
@@ -33,15 +35,15 @@ if (process.env.NODE_ENV === 'production') {
 server.use(session(sess));*/
 
 //Set bodyparser and static folder
-server.use(bodyParser.json());
+//server.use(bodyParser.json());
 server.use(express.static('dist/public'));
 
 //Https redirect for production
-if (process.env.NODE_ENV === 'production') {
+/*if (process.env.NODE_ENV === 'production') {
   server.use ((req, res, next) => {
     (req.secure) ? next() : res.redirect('https://' + req.headers.host + req.url);
   });
-}
+}*/
 
 //Listen to all incoming requests
 server.get('*', (req, res) => {

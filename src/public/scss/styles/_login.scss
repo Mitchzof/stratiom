@@ -40,6 +40,7 @@
   border: 1px solid rgba(119, 119, 119, 0.08);
   box-shadow: 0px 1px 0px 1px rgba(119, 119, 119, 0.1);
   max-width: 750px;
+  height: auto;
   border-radius: 2px;
 
   @media #{$small-and-down} {

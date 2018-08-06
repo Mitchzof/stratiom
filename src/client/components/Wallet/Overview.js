@@ -57,7 +57,7 @@ class Overview extends Component {
         if (asset.asset_type == "native") {
           this.xlm = asset.balance.slice(0, asset.balance.length - 4);
         } else if (asset.asset_code == 'STRTMUSD' && parseFloat(asset.balance) > 0) {
-          this.debts += parseFloat(asset.balance);
+          this.debts += parseFloat(asset.balance.slice(0, asset.balance.length - 5));
         }
       });
     }

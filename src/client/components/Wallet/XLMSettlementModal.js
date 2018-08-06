@@ -84,7 +84,7 @@ class XLMSettlementModal extends Component {
               <div className="input-field col s6" style={{ paddingLeft: '15px' }}>
                 <input disabled value={ this.props.amount } id="amount" type="number" className="validate" onChange={ this.handleChange } />
                 <label style={{ paddingLeft: '15px' }} className="active" htmlFor="amount">Amount</label>
-                <span className="helper-text">The amount debt asset to be exchanged</span>
+                <span className="helper-text">The amount of debt asset to be exchanged</span>
               </div>
             </div>
             <div className="row">
