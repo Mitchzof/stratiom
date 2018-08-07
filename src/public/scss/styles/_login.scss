@@ -1,10 +1,10 @@
 .login-panel {
   background-color: #fff;
-  border: 1px solid rgba(119, 119, 119, 0.08);
-  box-shadow: 0px 1px 0px 1px rgba(119, 119, 119, 0.1);
+  //border: 1px solid rgba(119, 119, 119, 0.08);
+  @extend .z-depth-1;
   height: 400px;
   width: 350px;
-  border-radius: 2px;
+  border-radius: 1px;
 
   @media #{$small-and-down} {
     width: auto;
@@ -13,10 +13,10 @@
 
 .privkey-panel {
   background-color: #fff;
-  border: 1px solid rgba(119, 119, 119, 0.08);
-  box-shadow: 0px 1px 0px 1px rgba(119, 119, 119, 0.1);
+  @extend .z-depth-1;
+  //border: 1px solid rgba(119, 119, 119, 0.08);
   width: 500px;
-  border-radius: 2px;
+  border-radius: 1px;
 
   @media #{$small-and-down} {
     width: 85vw;
@@ -25,10 +25,10 @@
 
 .keygen-panel {
   background-color: #fff;
-  border: 1px solid rgba(119, 119, 119, 0.08);
-  box-shadow: 0px 1px 0px 1px rgba(119, 119, 119, 0.1);
+  @extend .z-depth-1;
+  //border: 1px solid rgba(119, 119, 119, 0.08);
   max-width: 750px;
-  border-radius: 2px;
+  border-radius: 1px;
 
   @media #{$small-and-down} {
     width: 85vw;
@@ -37,11 +37,11 @@
 
 .keypair-panel {
   background-color: #fff;
-  border: 1px solid rgba(119, 119, 119, 0.08);
-  box-shadow: 0px 1px 0px 1px rgba(119, 119, 119, 0.1);
+  @extend .z-depth-1;
+  //border: 1px solid rgba(119, 119, 119, 0.08);
   max-width: 750px;
   height: auto;
-  border-radius: 2px;
+  border-radius: 1px;
 
   @media #{$small-and-down} {
     width: 85vw;

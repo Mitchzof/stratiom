@@ -125,7 +125,7 @@ class PathManager extends Component {
                 You are not currently mediating payments for any accounts</div>
               </div>
             }
-            <div className="passive-offer" style={{ background: 'white', borderTop: '1px solid rgba(119, 119, 119, 0.2)', display: 'flex', justifyContent: 'center', height: '60px' }}>
+            <div className="passive-offer" style={{ background: 'white', borderTop: '1px solid rgba(0, 0, 0, 0.15)', display: 'flex', justifyContent: 'center', height: '60px' }}>
               <a className="btn btn-small waves-effect waves-light" onClick={ this.openModal }><i className="material-icons">add</i></a>
             </div>
           </div>

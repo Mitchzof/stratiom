@@ -35,18 +35,18 @@ class Stats extends Component {
         </div>
         <div className="content">
           <div className="button-box">
-            <div className="button-container">
+            <div className="button-container" style={{width: '33%'}}>
               <Link to="/wallet/pay">
-                <div className="btn-floating btn-large waves-effect waves-light blue-button"><i className="material-icons">send</i></div>
+                <div className="btn-floating btn-large waves-effect waves-light blue-button" style={{ height: '65px', width: '65px' }}><i className="material-icons">send</i></div>
               </Link>
               <p>Send Payment</p>
             </div>
-            <div className="button-container">
-              <div className="modal-trigger btn-floating btn-large waves-effect waves-light white-button" href="#xlmmodal"><i className="material-icons">compare_arrows</i></div>
+            <div className="button-container" style={{width: '34%'}}>
+              <div className="modal-trigger btn-floating btn-large waves-effect waves-dark white-button" href="#xlmmodal" style={{ height: '65px', width: '65px' }}><i className="material-icons">compare_arrows</i></div>
               <p>Link XLM</p>
             </div>
-            <div className="button-container">
-              <div className="modal-trigger btn-floating btn-large waves-effect waves-light blue-button" href="#inflationmodal"><i className="material-icons">edit</i></div>
+            <div className="button-container" style={{width: '33%'}}>
+              <div className="modal-trigger btn-floating btn-large waves-effect waves-light blue-button" href="#inflationmodal" style={{ height: '65px', width: '65px' }}><i className="material-icons">edit</i></div>
               <p>Inflation</p>
             </div>
           </div>

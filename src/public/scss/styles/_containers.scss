@@ -102,7 +102,7 @@
 	display: flex;
 	width: 500px;
 	justify-content: center;
-	box-shadow: 0px 1px 0px 1px rgba(119, 119, 119, 0.1);
+	@extend .z-depth-1;
 	background-color: #fff;
 
 	@media #{$small-and-down} {

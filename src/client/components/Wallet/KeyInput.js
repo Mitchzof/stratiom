@@ -74,7 +74,6 @@ class KeyInput extends Component {
         </div>
       );
     } else {
-      console.log('here');
       return (
         <div className="privkey-panel valign-wrapper">
           <div className="col s10 offset-s1">
