@@ -16,7 +16,8 @@ var client = {
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: `'development'`
-      }
+      },
+      'TESTNET': true
     })
   ],
   module: {

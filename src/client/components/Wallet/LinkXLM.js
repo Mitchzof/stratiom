@@ -16,6 +16,10 @@ const mapDispatchToProps = (dispatch) => bindActionCreators({
   loadAccount: loadAccountAC
 }, dispatch);
 
+/*
+  Modal content for XLM link setup.  Checks for an offer buying own asset and selling XLM.
+  If found, loads that offer, otherwise enables creation of a new offer.
+*/
 class LinkXLM extends Component {
   constructor(props) {
     super(props);

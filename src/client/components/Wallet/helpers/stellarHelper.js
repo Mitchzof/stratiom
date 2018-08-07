@@ -2,6 +2,26 @@ const StellarSdk = require('stellar-sdk');
 StellarSdk.Network.useTestNetwork();
 const server = new StellarSdk.Server((TESTNET) ? 'https://horizon-testnet.stellar.org/' : 'https://horizon.stellar.org/');
 
+/*
+  These are helper functions for use with private keys (not Ledger).
+  Each exported function returns a promise for async handling in React
+  components.
+
+  Below are the parameter definitions as used in these helper functions
+
+  If a function is not exported, then it is simply a helper for one of these helper functions.
+
+  (Params)
+  pubkey: User's public key
+  privkey: User's private key
+  accountId: Target account address
+  price: Price of 1 unit of selling asset in terms of buying asset
+  amount: Amount of asset to be sent or exchanged
+  offerId: Offer Id for offer modification
+  issuer: Issuer of target asset (similar to/synonymous with accountId)
+  note: Text entry for memo type text
+*/
+
 export const loadAccount = (pubkey) => {
   return server.loadAccount(pubkey);
 }

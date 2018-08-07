@@ -20,6 +20,9 @@ const mapDispatchToProps = (dispatch) => bindActionCreators({
   loadAccount: loadAccountAC
 }, dispatch);
 
+/*
+  Loads IOU components for each Stratiom asset held with > 0 balance
+*/
 class IOUManager extends Component {
   constructor(props) {
     super(props);

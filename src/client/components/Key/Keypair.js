@@ -9,6 +9,7 @@ class Keypair extends Component {
     }
   }
 
+  //Highlight selected key
   handleSelect(e) {
     if (document.selection) {
         var range = document.body.createTextRange();

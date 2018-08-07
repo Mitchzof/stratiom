@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+/*
+  Trustline component for TrustManager
+*/
 class Trustline extends Component {
   constructor(props) {
     super(props);

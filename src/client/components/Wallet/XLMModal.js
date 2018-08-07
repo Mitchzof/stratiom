@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import LinkXLM from './LinkXLM';
 
+/*
+  This modal is the initial modal opened by the "Link XLM" button on the overview.
+  Just a warning page before filling content with XLM Link component.
+*/
 class XLMModal extends Component {
   constructor(props) {
     super(props);

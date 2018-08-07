@@ -7,7 +7,6 @@ import { bindActionCreators } from 'redux';
 import * as stellar from './helpers/stellarHelper';
 import { hasLoaded, loadAccount, setPrivkey, setPubkey } from '../../../store/actions';
 import AccountNotCreated from './AccountNotCreated';
-import FlagsNotSet from './FlagsNotSet';
 
 const mapStateToProps = state => {
   return {
@@ -25,6 +24,10 @@ const mapDispatchToProps = (dispatch) => bindActionCreators({
   setPubkey: setPubkey
 }, dispatch);
 
+/*
+  Container for wallet page.  Makes sure account has been created, and handles
+  basic reloading every 5 seconds.
+*/
 class WalletSetup extends Component {
   constructor(props) {
     super(props);
@@ -89,7 +92,8 @@ class WalletSetup extends Component {
           <AccountNotCreated loadAccount={ this.loadAccount } pubkey={ this.props.pubkey } />
         </div>
       );
-    } /* else if (!this.props.account.flags.auth_required || !this.props.account.flags.auth_revocable) {
+    } /* Note: This will be enabled if I transition the system to an auth required setup
+    else if (!this.props.account.flags.auth_required || !this.props.account.flags.auth_revocable) {
       return (
         <div className="cp-container">
           <FlagsNotSet loadAccount={ this.loadAccount } privkey={ this.props.privkey } />

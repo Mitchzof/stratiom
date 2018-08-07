@@ -4,7 +4,7 @@ Stellar p2p web-wallet
 ## Deployment
 
 ### Prerequisites
-Node.js, Gulp
+Node.js
 
 ### Environment Setup
 ```sh
@@ -20,15 +20,26 @@ npm install
 
 ```sh
 # Build the src
-gulp build
+npm run build
+```
+
+## Alternative Builds
+
+```sh
+# Dev
+npm run dev
+
+# Testnet
+npm run testnet
 ```
 
 ### Running
 
-```
-# Run the server (in dev mode)
-node ./dist/server.js
+```sh
+# Run the server
+npm run start
 ```
 
-## Notes:
-I do aim to make the build process easier before release.  Take note that these are just temporary setup instructions.
+## Notes
+
+This is not exactly the version run on Stratiom.io, with the only difference being that Stratiom.io uses server rendering (all components within the client are the same).

@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import * as stellar from './helpers/stellarHelper';
 import Loader from '../Misc/Loader';
 
+/*
+  Debt settlement component.  Loads total owed amount from balances.
+*/
 class IOU extends Component {
   constructor(props) {
     super(props);
@@ -106,7 +109,7 @@ class IOU extends Component {
             </div>
             <a className="waves-effect waves-light btn-small" onClick={ this.max } style={{ marginLeft: '15px' }}>Max</a>
           </div>
-          <div className="row center-align">
+          <div className="row center-align" style={{ padding: '0px 10px 0px 10px' }}>
             <p>
               <label>
                 <input id="check" type="checkbox" className="filled-in" checked={ this.state.checked } onChange={ this.handleChange } />

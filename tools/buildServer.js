@@ -4,6 +4,7 @@ const gulp = require('gulp');
 const webpack = require('webpack-stream');
 const config = require('./webpack/webpack.server.config.js');
 const prodConfig = require('./webpack/webpack.server.prod.config.js');
+const testnetConfig = require('./webpack/webpack.server.testnet.config.js');
 
 let ROOT = '../';
 
@@ -19,5 +20,11 @@ gulp.task('build:server', function () {
 gulp.task('build:server:prod', function () {
   return gulp.src(entry)
     .pipe(webpack(prodConfig))
+    .pipe(gulp.dest(dest));
+});
+
+gulp.task('build:server:testnet', function () {
+  return gulp.src(entry)
+    .pipe(webpack(testnetConfig))
     .pipe(gulp.dest(dest));
 });

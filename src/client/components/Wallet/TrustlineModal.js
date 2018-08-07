@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TrustlineModalRow from './TrustlineModalRow';
 
+/* Trustline selection to fill fields */
 class TrustlineModal extends Component {
   constructor(props) {
     super(props);

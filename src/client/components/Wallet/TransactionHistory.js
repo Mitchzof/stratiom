@@ -104,7 +104,7 @@ class TransactionHistory extends Component {
             </h5>
           </div>
           <div className="transaction-container">
-            <div className="tx">
+            <div className="tx" style={{ borderTop: '0px' }}>
             <div style={{width: '10%'}}></div>
             <div style={{width: '20%'}}><p>Amount</p></div>
             <div style={{width: '20%'}}><p>Payment Type</p></div>

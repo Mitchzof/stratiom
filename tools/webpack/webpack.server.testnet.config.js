@@ -15,7 +15,7 @@ var server = {
   plugins: [
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production'),
-      'TESTNET': false
+      'TESTNET': true
     }),
     new webpack.optimize.UglifyJsPlugin()
   ],

@@ -29,6 +29,9 @@ const mapDispatchToProps = (dispatch) => bindActionCreators({
   setPubkey: setPubkey
 }, dispatch);
 
+/*
+  Primary wallet component with routing and login
+*/
 class Wallet extends Component {
   constructor(props) {
     super(props);

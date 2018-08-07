@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import * as stellar from './helpers/stellarHelper';
 import Loader from '../Misc/Loader';
 
+/*
+  This modal is opened by an IOU.  Modal for debt holder to exchange debt for XLM.
+*/
 class XLMSettlementModal extends Component {
   constructor(props) {
     super(props);

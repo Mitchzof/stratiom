@@ -1,9 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
 
-//Change process.env to production when going live.
-//TODO: Make dev/production environment selection more efficient
-
 var client = {
   entry: './src/client/client.js',
   watch: true,
@@ -14,10 +11,10 @@ var client = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: `'development'`
-      }
-    })
+      'process.env.NODE_ENV': JSON.stringify('production'),
+      'TESTNET': false
+    }),
+    new webpack.optimize.UglifyJsPlugin()
   ],
   module: {
     loaders: [

@@ -20,6 +20,9 @@ const mapDispatchToProps = (dispatch) => bindActionCreators({
   setTrustlines: setTrustlines
 }, dispatch);
 
+/*
+  Page component for trustline management page.  Renders multiple trustline components.
+*/
 class TrustManager extends Component {
   constructor(props) {
     super(props);
@@ -94,7 +97,7 @@ class TrustManager extends Component {
         </div>
       );
     }
-    
+
     return (
       <div className="cp-container">
         <div className="panel-container">

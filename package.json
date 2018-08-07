@@ -5,7 +5,9 @@
   "main": "server.js",
   "scripts": {
     "start": "node ./dist/server",
-    "build": "webpack"
+    "build": "./node_modules/.bin/gulp prod",
+    "testnet": "./node_modules/.bin/gulp testnet",
+    "dev": "./node_modules/.bin/gulp"
   },
   "devDependencies": {
     "babel-core": "^6.10.4",
@@ -24,11 +26,7 @@
     "webpack-stream": "^4.0.3"
   },
   "dependencies": {
-    "body-parser": "^1.18.3",
     "express": "^4.14.0",
-    "fs": "0.0.1-security",
-    "http": "0.0.0",
-    "https": "^1.0.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.7",

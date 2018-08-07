@@ -2,13 +2,16 @@ import React, { Component } from 'react';
 import { createOffers } from './helpers/stellarHelper.js';
 import Loader from '../Misc/Loader';
 
+/*
+  Passive offer creation modal
+*/
 class OfferModal extends Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.state = {
-      amount: "10000.00",
+      amount: "250.00",
       price: "1",
       checked: false,
       loading: false
@@ -85,6 +88,10 @@ class OfferModal extends Component {
                 your account may passively mediate payments and send path payments through this trustline.
                 Note that once the total amount specified has been mediated, a new offer must
                 be created.
+              </p>
+              <p>
+                It is recommended that you keep this value low in case the target account becomes
+                compromised, which could result in unwanted issuing of your debt asset.
               </p>
             </div>
             <div className="row">

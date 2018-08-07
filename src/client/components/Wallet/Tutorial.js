@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 
+/*
+  TODO: I'd really like to make a better tutorial.  If anyone would like to contribute
+  to Stratiom, this would be an excellent place to help out.
+*/
 class Tutorial extends Component {
   complete() {
     localStorage.setItem('tutorial', true);

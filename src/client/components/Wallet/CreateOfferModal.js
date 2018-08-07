@@ -9,6 +9,10 @@ const mapStateToProps = state => {
   }
 }
 
+/*
+  Modal for PathManager component.  Loads trustlines for selection,
+  then opens OfferModal.
+*/
 class CreateOfferModal extends Component {
   constructor(props) {
     super(props);

@@ -1,21 +1,18 @@
 const webpack = require('webpack');
-const nodeExternals = require('webpack-node-externals');
 const path = require('path');
 
-var server = {
-  entry: './src/server.js',
+var client = {
+  entry: './src/client/client.js',
   watch: true,
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'server.js',
+    filename: 'public/client.js',
     publicPath: '/'
   },
-  target: 'node',
-  externals: [nodeExternals()],
   plugins: [
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production'),
-      'TESTNET': false
+      'TESTNET': true
     }),
     new webpack.optimize.UglifyJsPlugin()
   ],
@@ -29,4 +26,4 @@ var server = {
   }
 }
 
-module.exports = server;
+module.exports = client;

@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import Loader from '../Misc/Loader';
 import * as stellar from './helpers/stellarHelper';
 
-class AccountNotCreated extends Component {
+/*
+  Component not currently in use.
+*/
+class FlagsNotSet extends Component {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
@@ -78,4 +81,4 @@ class AccountNotCreated extends Component {
   }
 }
 
-export default AccountNotCreated;
+export default FlagsNotSet;

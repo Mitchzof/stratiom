@@ -18,6 +18,9 @@ const mapDispatchToProps = (dispatch) => bindActionCreators({
   loadAccount: loadAccountAC
 }, dispatch);
 
+/*
+  Manager for payment mediation.  Supports the creation / editing of passive offers.
+*/
 class PathManager extends Component {
   constructor(props) {
     super(props);
@@ -109,7 +112,7 @@ class PathManager extends Component {
           </div>
           <div className="content">
             { (rows.length > 0) ?
-              <div className="passive-offer" style={{ background: 'white', borderTop: '1px solid rgba(119, 119, 119, 0.08)' }}>
+              <div className="passive-offer" style={{ background: 'white', borderTop: '0px solid rgba(119, 119, 119, 0.08)' }}>
                 <div className="offer-content info" style={{ width: '60%', minWidth: '75px' }}><p>Account</p></div>
                 <div className="offer-content info" style={{ width: '10%', minWidth: '75px' }}><p>Amount</p></div>
                 <div className="offer-content info" style={{ width: '5%', minWidth: '50px' }}><p>Price</p></div>
