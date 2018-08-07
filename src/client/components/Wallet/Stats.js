@@ -42,7 +42,7 @@ class Stats extends Component {
               <p>Send Payment</p>
             </div>
             <div className="button-container" style={{width: '34%'}}>
-              <div className="modal-trigger btn-floating btn-large waves-effect waves-dark white-button" href="#xlmmodal" style={{ height: '65px', width: '65px' }}><i className="material-icons">compare_arrows</i></div>
+              <div className="modal-trigger btn-floating btn-large waves-effect waves-dark white-button" href="#xlmmodal" style={{ height: '65px', width: '65px' }}><i style={{ paddingTop: '3px' }} className="material-icons">compare_arrows</i></div>
               <p>Link XLM</p>
             </div>
             <div className="button-container" style={{width: '33%'}}>

@@ -113,10 +113,9 @@ class PathManager extends Component {
           <div className="content">
             { (rows.length > 0) ?
               <div className="passive-offer" style={{ background: 'white', borderTop: '0px solid rgba(119, 119, 119, 0.08)' }}>
-                <div className="offer-content info" style={{ width: '60%', minWidth: '75px' }}><p>Account</p></div>
-                <div className="offer-content info" style={{ width: '10%', minWidth: '75px' }}><p>Amount</p></div>
-                <div className="offer-content info" style={{ width: '5%', minWidth: '50px' }}><p>Price</p></div>
-                <div className="offer-content info" style={{ width: '15%', minWidth: '75px' }}><p>Date Created</p></div>
+                <div className="offer-content info" style={{ width: '70%', minWidth: '75px' }}><p>Account</p></div>
+                <div className="offer-content info" style={{ width: '15%', minWidth: '75px' }}><p>Amount</p></div>
+                <div className="offer-content info" style={{ width: '10%', minWidth: '50px' }}><p>Price</p></div>
               </div> : <div></div>
             }
             {

@@ -5,7 +5,7 @@ class PassiveOffer extends Component {
   constructor(props) {
     super(props);
     this.delete = this.delete.bind(this);
-    this.date = new Date(this.props.offer.last_modified_time);
+    console.log(this.props.offer);
     this.state = {
       loading: false
     }
@@ -50,11 +50,10 @@ class PassiveOffer extends Component {
     }
     return (
       <div className="passive-offer" id={ this.props.offer.id } style={ (this.state.deleted) ? {display: 'none'} : {} }>
-        <div className="offer-content" style={{ width: '60%', minWidth: '275px' }}><p>{ this.props.offer.buying.asset_issuer }</p></div>
-        <div className="offer-content" style={{ width: '10%', minWidth: '75px' }}><p>${ this.props.offer.amount.slice(0, this.props.offer.amount.length - 5) }</p></div>
-        <div className="offer-content" style={{ width: '5%', minWidth: '50px' }}><p>{ this.props.offer.price.slice(0, this.props.offer.price.length - 4) }</p></div>
-        <div className="offer-content" style={{ width: '15%', minWidth: '100px' }}><p>{ this.date.toDateString() }</p></div>
-        <div className="offer-content" style={{ width: '5%', minWidth: '50px' }}><a onClick={ this.delete } className="delete"><i className="tiny material-icons">close</i></a></div>
+        <div className="offer-content" style={{ width: '70%', minWidth: '275px' }}><p>{ this.props.offer.buying.asset_issuer }</p></div>
+        <div className="offer-content" style={{ width: '15%', minWidth: '75px' }}><p>${ this.props.offer.amount.slice(0, this.props.offer.amount.length - 5) }</p></div>
+        <div className="offer-content" style={{ width: '10%', minWidth: '50px' }}><p>{ this.props.offer.price.slice(0, this.props.offer.price.length - 4) }</p></div>
+        <div className="offer-content" style={{ width: '5%', minWidth: '20px' }}><a onClick={ this.delete } className="delete"><i className="tiny material-icons">close</i></a></div>
       </div>
     );
   }
