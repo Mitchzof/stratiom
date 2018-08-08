@@ -56,6 +56,8 @@ class PathManager extends Component {
         this.setState({ loading: false });
         let elem = document.getElementById('trustlinemodal');
         M.Modal.init(elem);
+        let info = document.getElementById('info');
+        M.Modal.init(info);
         this.instance = M.Modal.getInstance(elem);
       }
     }
@@ -109,6 +111,7 @@ class PathManager extends Component {
             <h5>
               Payment Mediation Manager
             </h5>
+            <a href="#info" className="modal-trigger info"><i className="material-icons">info_outline</i></a>
           </div>
           <div className="content">
             { (rows.length > 0) ?
@@ -131,6 +134,16 @@ class PathManager extends Component {
         </div>
         <CreateOfferModal target={ this.target } />
         <OfferModal privkey={ this.props.privkey } accountId={ this.state.target } clear={ this.clearFields } />
+        <div id="info" className="modal">
+          <div className="modal-content">
+            <p>This component allows you to manage passive offers that have been placed on the SDEX for the purpose of payment mediation.</p>
+            <p>Account ID represents the trustline you are mediating payments for, amount is the total you are willing to mediate, and price is the exchange rate
+            of your debt asset to the trustlines debt asset.</p>
+          </div>
+          <div className="modal-footer">
+            <a href="#!" className="modal-close waves-effect waves-dark btn-flat">Close</a>
+          </div>
+        </div>
       </div>
     );
   }

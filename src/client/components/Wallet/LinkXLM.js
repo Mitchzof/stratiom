@@ -58,7 +58,7 @@ class LinkXLM extends Component {
     .then(data => data.json())
     .then(price => {
       this.setState({ price: price.USD })
-    })
+    });
   }
 
   reload() {

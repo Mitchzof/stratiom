@@ -42,7 +42,7 @@ class AccountNotCreated extends Component {
     if (this.state.loading) {
       return (
         <div className="panel-container">
-          <div className="loader-container" style={{ marginTop: '15vh', marginBottom: '15vh' }}>
+          <div className="loader-container" style={{ paddingTop: '15vh', paddingBottom: '15vh', marginTop: '0px' }}>
             <Loader />
           </div>
         </div>
@@ -69,12 +69,12 @@ class AccountNotCreated extends Component {
             </p>
             <p>Note: Stratiom.io is currently running on the testnet, click the button below to fund your account</p>
           </div>
+          { (TESTNET) ?
+            <div className="row center-align">
+              <a onClick={ this.fundAccount } className="btn waves-effect waves-light btn-primary">Fund Account</a>
+            </div> : <div></div>
+          }
         </div>
-        { (TESTNET) ?
-          <div className="row center-align">
-            <a onClick={ this.fundAccount } className="btn waves-effect waves-light btn-primary">Fund Account</a>
-          </div> : <div></div>
-        }
       </div>
     );
   }

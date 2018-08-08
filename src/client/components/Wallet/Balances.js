@@ -12,13 +12,13 @@ class Balances extends Component {
           <h5>Balances</h5>
         </div>
         <div className="content">
-          <div className="xlm-balance">
-            <p>Lumens:</p>
-            <i>{ this.props.xlm } XLM</i>
+          <div className="balance-box">
+            <div className="currency">Lumens</div>
+            <div className="balance"><i>{ this.props.xlm } XLM</i></div>
           </div>
-          <div className="stratiom-balance">
-            <p>Stratiom Balance:</p>
-            <i><a>${ this.props.debts }</a> USD</i>
+          <div className="balance-box">
+            <div className="currency">Stratiom</div>
+            <div className="balance"><i style={{ color: 'green' }}>${ this.props.debts }</i></div>
           </div>
         </div>
       </div>

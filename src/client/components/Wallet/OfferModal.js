@@ -86,11 +86,7 @@ class OfferModal extends Component {
               <p>
                 This will create a passive order on the SDEX.  By creating this order,
                 your account may passively mediate payments and send path payments through this trustline.
-                Note that once the total amount specified has been mediated, a new offer must
-                be created.
-              </p>
-              <p>
-                It is recommended that you keep this value low in case the target account becomes
+                It is recommended that you keep the total amount low in case the target account becomes
                 compromised, which could result in unwanted issuing of your debt asset.
               </p>
             </div>
