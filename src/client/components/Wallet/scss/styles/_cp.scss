@@ -576,29 +576,6 @@
   }
 }
 
-.tracker-container {
-  display: flex;
-  width: 100%;
-  height: 60px;
-  margin-bottom: 25px;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0px 20px 0px 20px;
-
-  .divider {
-    flex-grow: 1;
-    width: fill-available;
-  }
-
-  .tracker {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: white !important;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-  }
-}
-
 .tutorial {
   height: 400px !important;
 

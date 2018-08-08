@@ -24,11 +24,11 @@ class ControlNavSide extends Component {
         <li><Link to="/wallet/trustline">
           <i className="material-icons sidenav-icon">library_add</i>Add Trust
         </Link></li>
-        <li><Link to="/wallet/paths">
-          <i className="material-icons sidenav-icon">people</i>Payment Mediation
-        </Link></li>
         <li><Link to="/wallet/trustlines">
           <i className="material-icons sidenav-icon">portrait</i>Manage Trust
+        </Link></li>
+        <li><Link to="/wallet/paths">
+          <i className="material-icons sidenav-icon">people</i>Payment Mediation
         </Link></li>
       </ul>
     );
