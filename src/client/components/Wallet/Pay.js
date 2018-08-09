@@ -91,12 +91,12 @@ class Pay extends Component {
         stellar.issueAssets(this.props.privkey, this.state.accountId, this.state.amount, this.state.memo)
         .then(res => {
           if (this.mounted) {
-            this.setState({ loading: false, msg: '', accountId: '' });
+            this.setState({ loading: false, msg: '', accountId: '', amount: '', step: 1 });
           }
           M.toast({ html: 'Success: Payment has been sent', classes: 'success-toast' });
         }).catch(err => {
           if (this.mounted) {
-            this.setState({ loading: false, msg: '', accountId: '' });
+            this.setState({ loading: false, msg: '', accountId: '', amount: '', step: 1  });
           }
           console.log(err);
           if (err.message.startsWith('Text should be')) {
@@ -126,7 +126,7 @@ class Pay extends Component {
           console.log(err.data);
           console.log(err.message);
           if (this.mounted) {
-            this.setState({ loading: false, msg: '', step: 1 });
+            this.setState({ loading: false, msg: '' });
           }
           M.toast({ html: 'Error: Payment failed to send', classes: 'error-toast' });
         });
@@ -148,14 +148,14 @@ class Pay extends Component {
       content = <div className="panel-container small">
         <div className="row panel-header">
           <h6>
-            Account ID
+            Recipient Account ID
           </h6>
         </div>
         <div className="row panel-content">
           <form className="col s10 offset-s1">
             <div className="row center-align">
               <p>
-                Please enter the receiving account ID or select from your trustlines, and continue to the next step.
+                Please enter the recipient{'\''}s account ID or select from your trustlines and continue to the next step.
               </p>
             </div>
             <div className="row valign-wrapper">
@@ -192,7 +192,7 @@ class Pay extends Component {
               <div className="input-field col s12">
                 <i className="material-icons prefix">attach_money</i>
                 <input id="amount" type="number" value={ this.state.amount } className="validate" onChange={ this.handleChange } />
-                <label htmlFor="amount">Amount</label>
+                <label className={ (this.state.amount) ? 'active' : '' } htmlFor="amount">Amount</label>
               </div>
             </div>
             <div className="center-align" style={{ marginBottom: '25px' }}>
@@ -221,7 +221,7 @@ class Pay extends Component {
             <div className="row valign-wrapper">
               <div className="input-field col s12">
                 <input id="memo" type="text" className="validate" value={ this.state.memo } onChange={ this.handleChange } maxLength="28"/>
-                <label htmlFor="memo">Note (optional)</label>
+                <label className={ (this.state.memo) ? 'active' : '' } htmlFor="memo">Note (optional)</label>
               </div>
             </div>
             <div className="center-align" style={{ marginBottom: '25px' }}>

@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import routes from './routes';
 
 let style = {
-  backgroundColor: '#f2f6f9',
+  background: 'linear-gradient(#bbdef7, #f2f6f9)',
   minHeight: '100vh',
   minWidth: '100vw'
 }

@@ -55,9 +55,9 @@ class FlagsNotSet extends Component {
     return (
       <div className="panel-container">
         <div className="panel-header" style={{display: 'flex', justifyContent: 'space-between'}}>
-            <h5>
+            <h6>
               Set Authorization Flags
-            </h5>
+            </h6>
             <a className="refresh-button" onClick={ this.handleClick }><i className="material-icons">refresh</i></a>
         </div>
         <div className="row panel-content">

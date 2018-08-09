@@ -19,7 +19,7 @@ class ControlNavTop extends Component {
 
   render() {
     return (
-      <div className="panel-container small">
+      <div className="panel-container small" style={{ marginBottom: '25px' }}>
         <div className="tracker-container">
           <div id="1" onClick={ this.props.setStep } className="btn-floating btn-small tracker" style={ (this.props.step >= 1) ? styleActive : styleInactive }>1</div>
           <div className="divider" style={ (this.props.step >= 2) ? styleActive : styleInactive }></div>

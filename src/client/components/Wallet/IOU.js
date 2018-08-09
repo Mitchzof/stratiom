@@ -103,8 +103,8 @@ class IOU extends Component {
           <div className="row valign-wrapper" style={{ display: 'flex', justifyContent: 'center' }}>
             <div className="input-field" style={{width: '60%'}}>
               <i className="material-icons prefix">attach_money</i>
-              <input id={ this.props.issuer } type="number" className="validate" value={ this.state[this.props.issuer] } onChange={ this.handleChange } style={{ borderBottom: '1px solid #505558' }} />
-              <label className={ (this.state[this.props.issuer]) ? 'active' : '' } htmlFor={ "" + this.props.issuer + "" } style={{ color: '#505558' }}>Amount</label>
+              <input id={ this.props.issuer } type="number" className="validate" value={ this.state[this.props.issuer] } onChange={ this.handleChange } />
+              <label className={ (this.state[this.props.issuer]) ? 'active' : '' } htmlFor={ "" + this.props.issuer + "" }>Amount</label>
               <span className="helper-text">Debt to be cleared</span>
             </div>
             <a className="waves-effect waves-light btn-small" onClick={ this.max } style={{ marginLeft: '15px' }}>Max</a>
@@ -113,7 +113,7 @@ class IOU extends Component {
             <p>
               <label>
                 <input id="check" type="checkbox" className="filled-in" checked={ this.state.checked } onChange={ this.handleChange } />
-                <span style={{ color: '#505558' }}>
+                <span>
                   <b>Warning:</b> Are you sure you want to do this?  This action will be
                   broadcast to the Stellar network and is irreversible.
                 </span>
@@ -122,10 +122,10 @@ class IOU extends Component {
           </div>
           <div className="center-align" style={{ marginBottom: '25px' }}>
             <button onClick={ this.handleSubmit } className={
-              (this.state[this.props.issuer] && this.state.checked) ? "btn waves-effect waves-light btn-primary" : "btn disabled iou-disabled-button"
+              (this.state[this.props.issuer] && this.state.checked) ? "btn waves-effect waves-light btn-primary" : "btn disabled"
             } style={{ marginRight: '15px' }}>Send</button>
             <a onClick={ this.xlmExchange } className={
-              (this.state[this.props.issuer] && this.state.checked) ? "btn waves-effect waves-light btn-primary" : "btn disabled iou-disabled-button"
+              (this.state[this.props.issuer] && this.state.checked) ? "btn waves-effect waves-light btn-primary" : "btn disabled"
             } style={{ marginLeft: '15px' }}>Settle for XLM</a>
           </div>
         </form>;

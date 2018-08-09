@@ -74,9 +74,9 @@ class IOUManager extends Component {
     return (
       <div className="iou-container">
         <div className="panel-header">
-          <h5>
+          <h6>
             Payment Manager
-          </h5>
+          </h6>
         </div>
         <div className="iou-content">
           { (rows.length > 0) ? rows : <div className="no-iou-container"><p>You are not currently owed any money</p></div> }

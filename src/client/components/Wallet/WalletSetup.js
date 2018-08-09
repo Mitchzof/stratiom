@@ -57,7 +57,8 @@ class WalletSetup extends Component {
         this.props.setTrustlines(trustlines);
       });*/
     }).catch((e) => {
-      if (e.message == 'Error: No Network Connection') {
+      console.log(e.message);
+      if (e.message == 'Error: No Network Connection' || e.message == 'Error: Network Error') {
         setTimeout(() => {
           this.props.setPrivkey('');
           this.props.setPubkey('');

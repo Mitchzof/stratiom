@@ -9,6 +9,8 @@
   .panel-container {
     background-color: #fff;
     //border: 1px solid rgba(119, 119, 119, 0.08);
+    border-radius: 2px;
+    overflow: hidden;
     @extend .z-depth-1;
 
     .panel-header {
@@ -16,12 +18,12 @@
       height: 50px;
       display: flex;
       align-items: center;
-      padding: 5px 10px 5px 10px;
+      padding: 15px 20px 15px 20px;
       border-bottom: 1px solid rgba(119, 119, 119, 0.2);
     }
 
     .panel-content {
-      padding: 5px 10px 5px 10px;
+      padding: 15px 20px 15px 20px;
     }
   }
 
@@ -38,28 +40,29 @@
 
 .iou-container {
   @extend .z-depth-1;
-  border-radius: 1px;
+  overflow: hidden;
+  border-radius: 2px;
 
   .panel-header {
     width: 100%;
     height: 50px;
     display: flex;
     align-items: center;
-    padding: 5px 10px 5px 10px;
-    border-bottom: 1px solid rgba(119, 119, 119, 0.2);
+    padding: 15px 20px 15px 20px;
     background-color: #fff;
   }
 
   .iou-content {
     //border: 1px solid rgba(63, 123, 222, 0.8);
-    background: linear-gradient(to right, rgba(63, 123, 222, 0.2), rgba(63, 123, 222, 0.1));
+    //background: linear-gradient(to right, rgba(63, 123, 222, 0.3), rgba(63, 123, 222, 0.15));
+    background-color: white;
     height: auto;
     width: 100%;
   }
 }
 
 .no-iou-container {
-  padding: 1px 10px 10px 10px;
+  padding: 20px 10px 20px 10px;
   min-height: 100px;
   width: 100%;
   display: flex;
@@ -68,7 +71,8 @@
   justify-content: center;
   word-wrap: break-word;
   border-top: 1px solid rgba(63, 123, 222, 0.35);
-  background: linear-gradient(to right, rgba(63, 123, 222, 0.2), rgba(63, 123, 222, 0.1));
+  //background: linear-gradient(to right, rgba(63, 123, 222, 0.2), rgba(63, 123, 222, 0.1));
+  background-color: white;
 
   p {
     font-size: 17px;
@@ -83,15 +87,17 @@
   align-items: center;
   justify-content: space-between;
   word-wrap: break-word;
-  border-top: 1px solid rgba(63, 123, 222, 0.35);
-  padding-left: 10px;
-  padding-right: 10px;
-  background: linear-gradient(to right, rgba(63, 123, 222, 0.2), rgba(63, 123, 222, 0.1));
+  //border-top: 1px solid rgba(63, 123, 222, 0.35);
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
+  padding-left: 20px;
+  padding-right: 20px;
+  //background: linear-gradient(to right, rgba(63, 123, 222, 0.2), rgba(63, 123, 222, 0.1));
+  background-color: white;
 }
 
 .tx {
   padding: 5px 10px 5px 10px;
-  min-height: 40px;
+  min-height: 50px;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -106,6 +112,10 @@
     overflow: hidden !important;
     transition: max-height 0.3s ease-in;
     -webkit-transition: max-height 0.15s ease-in;
+  }
+
+  p {
+    margin: 10px 0px 10px 0px;
   }
 
   @media #{$small-and-down} {
@@ -130,7 +140,8 @@
   overflow: hidden;
   transition: max-height 0.3s ease-in;
   -webkit-transition: max-height 0.15s ease-in;
-  background: linear-gradient(to right, rgba(63, 123, 222, 0.2), rgba(63, 123, 222, 0.1));
+  //background: linear-gradient(to right, rgba(63, 123, 222, 0.2), rgba(63, 123, 222, 0.1));
+  background-color: white;
 }
 
 .dropdown {
@@ -171,6 +182,7 @@
   height: 70px;
   border: 1px solid rgba(63, 123, 222, 0.8);
   background: linear-gradient(to right, rgba(63, 123, 222, 0.2), rgba(63, 123, 222, 0.1));
+  background-color: white;
   border-radius: 3px;
   align-items: center;
   margin-bottom: 25px;
@@ -224,11 +236,12 @@
 
 .balance-box {
   width: 100%;
-  @extend .z-depth-2;
-  border-radius: 1;
+  @extend .z-depth-1;
+  border-radius: 2px;
   height: 80px;
   margin-top: 20px;
   display: flex;
+  overflow: hidden;
 
   .currency {
     width: 35%;
@@ -285,6 +298,7 @@
     display: flex;
     align-items: center;
     border-bottom: 1px solid rgba(119, 119, 119, 0.2);
+    border-radius: 2px;
     width: 100%;
     @extend .z-depth-1;
   }
@@ -365,6 +379,8 @@
   height: 100%;
   background-color: white;
   @extend .z-depth-1;
+  border-radius: 2px;
+  overflow: hidden;
 
   @media #{$small-and-down} {
     height: auto;
@@ -379,10 +395,9 @@
     align-items: center;
     word-wrap: break-word;
     flex-wrap: wrap;
-    justify-content: center;
     background-color: white;
     border-bottom: 1px solid rgba(119, 119, 119, 0.2);
-    padding: 5px 10px 5px 10px;
+    padding: 10px 20px 10px 20px;
     width: 100%;
 
     a {
@@ -486,6 +501,8 @@
           background-color: $logo !important;
           color: white !important;
           margin-bottom: 10px;
+          max-width: 79.2px;
+          width: auto;
         }
 
         .white-button {
@@ -496,6 +513,8 @@
           color: $logo !important;
           border: 2px solid $logo;
           margin-bottom: 10px;
+          max-width: 83.2px;
+          width: auto;
 
           i {
             width: 100%;
@@ -524,14 +543,15 @@
 
 .offer-container {
   @extend .z-depth-1;
-  border-radius: 1px;
+  border-radius: 2px;
+  overflow: hidden;
 
   .offer-header {
     width: 100%;
     height: 50px;
     display: flex;
     align-items: center;
-    padding: 5px 10px 5px 10px;
+    padding: 15px 20px 15px 20px;
     border-bottom: 1px solid rgba(119, 119, 119, 0.2);
     background-color: #fff;
   }
@@ -562,10 +582,12 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding: 5px 0px 5px 0px;
+  padding: 0px 20px 0px 20px;
   flex-wrap: wrap;
-  border-top: 1px solid rgba(63, 123, 222, 0.35);
-  background: linear-gradient(to right, rgba(63, 123, 222, 0.2), rgba(63, 123, 222, 0.1));
+  //border-top: 1px solid rgba(63, 123, 222, 0.35);
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  background: $bg;
+  //background-color: white;
 
   @media #{$small-and-down} {
     justify-content: space-between;
@@ -580,7 +602,6 @@
   display: flex;
   width: 100%;
   height: 60px;
-  margin-bottom: 25px;
   align-items: center;
   justify-content: space-between;
   padding: 0px 20px 0px 20px;

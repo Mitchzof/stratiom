@@ -12,6 +12,11 @@ $black-text: #505558;
   display: flex;
 }
 
+h6 {
+  font-weight: 300;
+  font-size: 21px;
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;

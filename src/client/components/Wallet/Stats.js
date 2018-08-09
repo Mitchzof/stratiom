@@ -43,17 +43,17 @@ class Stats extends Component {
     return (
       <div className="account-info-container">
         <div className="header-container">
-          <div className="wrapper" style={{fontSize: '18px'}}><b>Account ID:</b> <a id="account"
-          style={{fontSize: '15px', borderBottom: '1px dotted rgba(119, 119, 119, 0.4)'}} onClick={ this.handleSelect }>{ this.props.accountId }</a></div>
+          <div className="wrapper" style={{fontSize: '18px'}}>Account ID: <a id="account"
+          style={{fontSize: '16px', borderBottom: '1px dotted rgba(119, 119, 119, 0.4)'}} onClick={ this.handleSelect }>{ this.props.accountId }</a></div>
         </div>
         <div className="content">
           <div className="stats-container">
-            <h4 style={{ marginTop: '0px', marginRight: '15px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><img style={{ height: '50px', width: '50px' }} src="/assets/stellar-logo.png" />XLM</h4>
+            <h5 style={{ marginTop: '0px', marginRight: '15px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><img style={{ height: '50px', width: '50px' }} src="/assets/stellar-logo.png" />XLM</h5>
             <div>
               <p style={{ fontSize: '12px', textAlign: 'center' }}>Current Price</p>
               <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <p style={{ fontSize: '16px' }}>{ this.state.price }</p>
-                <p style={{ marginLeft: '15px', backgroundColor: '#f2f6f9', borderRadius: '3px', fontSize: '13px', width: (this.state.change) ? '50px' : '0px', color: (this.state.gainedValue) ? 'green' : 'red', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                <p style={{ marginLeft: '15px', backgroundColor: '#f2f6f9', borderRadius: '2px', fontSize: '13px', width: (this.state.change) ? '50px' : '0px', color: (this.state.gainedValue) ? 'green' : 'red', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
                   { this.state.change }
                 </p>
               </div>
@@ -62,16 +62,16 @@ class Stats extends Component {
           <div className="button-box">
             <div className="button-container" style={{width: '33%'}}>
               <Link to="/wallet/pay">
-                <div className="btn-floating btn-large waves-effect waves-light blue-button"><i className="material-icons">send</i></div>
+                <div className="btn btn-large waves-effect waves-light blue-button"><i className="material-icons">send</i></div>
               </Link>
-              <p>Send Payment</p>
+              <p>Send Funds</p>
             </div>
             <div className="button-container" style={{width: '34%'}}>
-              <div className="modal-trigger btn-floating btn-large waves-effect waves-dark white-button" href="#xlmmodal"><i className="material-icons">compare_arrows</i></div>
-              <p>Link XLM</p>
+              <div className="modal-trigger btn btn-large waves-effect waves-dark white-button" href="#xlmmodal"><i className="material-icons">compare_arrows</i></div>
+              <p>XLM Buyback</p>
             </div>
             <div className="button-container" style={{width: '33%'}}>
-              <div className="modal-trigger btn-floating btn-large waves-effect waves-light blue-button" href="#inflationmodal"><i className="material-icons">edit</i></div>
+              <div className="modal-trigger btn btn-large waves-effect waves-light blue-button" href="#inflationmodal"><i className="material-icons">edit</i></div>
               <p>Inflation</p>
             </div>
           </div>

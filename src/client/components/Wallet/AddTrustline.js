@@ -99,9 +99,9 @@ class AddTrustline extends Component {
       <div className="cp-container">
         <div className="panel-container small">
           <div className="row panel-header">
-            <h5>
+            <h6>
               Create Trustline
-            </h5>
+            </h6>
           </div>
           <div className="row panel-content">
             <form className="col s10 offset-s1" onSubmit={ this.handleSubmit }>

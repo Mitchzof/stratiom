@@ -102,9 +102,9 @@ class TrustManager extends Component {
       <div className="cp-container">
         <div className="panel-container">
           <div className="row panel-header">
-            <h5>
+            <h6>
               Stratiom Trustlines
-            </h5>
+            </h6>
           </div>
           <div className="row panel-content">
             <div className="trustline-container">

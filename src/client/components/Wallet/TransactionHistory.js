@@ -99,21 +99,26 @@ class TransactionHistory extends Component {
       <div className="cp-container">
         <div className="panel-container">
           <div className="panel-header">
-            <h5>
+            <h6>
               Transaction History
-            </h5>
+            </h6>
           </div>
           <div className="transaction-container">
-            <div className="tx" style={{ borderTop: '0px' }}>
-            <div style={{width: '10%'}}></div>
-            <div style={{width: '20%'}}><p>Amount</p></div>
-            <div style={{width: '20%'}}><p>Payment Type</p></div>
-            <div style={{width: '20%'}}><p>Account</p></div>
-            <div style={{width: '20%'}}><p>Date</p></div>
-            </div>
             {
-              (rows.length > 0) ? rows :
-              <div className="row center-align"><p style={{ fontSize: '17px' }}>
+              (rows.length > 0) ?
+              <div className="tx" style={{ borderTop: '0px' }}>
+                <div style={{width: '10%'}}></div>
+                <div style={{width: '20%'}}><p>Amount</p></div>
+                <div style={{width: '20%'}}><p>Payment Type</p></div>
+                <div style={{width: '20%'}}><p>Account</p></div>
+                <div style={{width: '20%'}}><p>Date</p></div>
+              </div> :
+              <div></div>
+            }
+            {
+              (rows.length > 0) ?
+              rows :
+              <div className="row center-align"><p style={{ fontSize: '17px', marginBottom: '30px', marginTop: '30px' }}>
                 You have not yet made any transactions through Stratiom</p>
               </div>
             }

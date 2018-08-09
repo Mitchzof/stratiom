@@ -4,7 +4,7 @@
   @extend .z-depth-1;
   height: 400px;
   width: 350px;
-  border-radius: 1px;
+  border-radius: 2px;
 
   @media #{$small-and-down} {
     width: auto;
@@ -16,11 +16,20 @@
   @extend .z-depth-1;
   //border: 1px solid rgba(119, 119, 119, 0.08);
   width: 500px;
-  border-radius: 1px;
+  border-radius: 2px;
 
   @media #{$small-and-down} {
     width: 85vw;
   }
+}
+
+.key-panel {
+  @extend .z-depth-1;
+  background: white;
+  border-radius: 2px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .keygen-panel {
@@ -28,7 +37,6 @@
   @extend .z-depth-1;
   //border: 1px solid rgba(119, 119, 119, 0.08);
   max-width: 750px;
-  border-radius: 1px;
 
   @media #{$small-and-down} {
     width: 85vw;
@@ -41,7 +49,6 @@
   //border: 1px solid rgba(119, 119, 119, 0.08);
   max-width: 750px;
   height: auto;
-  border-radius: 1px;
 
   @media #{$small-and-down} {
     width: 85vw;

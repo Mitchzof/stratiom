@@ -50,7 +50,7 @@ class CreateOfferModal extends Component {
     return (
       <div id="trustlinemodal" className="modal modal-fixed-footer">
         <div className="modal-content" style={{ display: 'inline-block', wordBreak: 'break-word' }}>
-          <h5>Select Trustline</h5>
+          <h6>Select Trustline</h6>
           { rows }
         </div>
         <div className="modal-footer">

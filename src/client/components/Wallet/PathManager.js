@@ -108,9 +108,9 @@ class PathManager extends Component {
       <div className="cp-container">
         <div className="offer-container">
           <div className="offer-header" style={{ display: 'flex', 'justifyContent': 'space-between' }}>
-            <h5>
+            <h6>
               Payment Mediation Manager
-            </h5>
+            </h6>
             <a href="#info" className="modal-trigger info"><i className="material-icons">info_outline</i></a>
           </div>
           <div className="content">
@@ -127,7 +127,7 @@ class PathManager extends Component {
                 You are not currently mediating payments for any accounts</div>
               </div>
             }
-            <div className="passive-offer" style={{ background: 'white', borderTop: '1px solid rgba(0, 0, 0, 0.15)', display: 'flex', justifyContent: 'center', height: '60px' }}>
+            <div className="passive-offer" style={{ background: 'white', borderTop: '1px solid rgba(0, 0, 0, 0.2)', display: 'flex', justifyContent: 'center', height: '60px' }}>
               <a className="btn btn-small waves-effect waves-light" onClick={ this.openModal }><i className="material-icons">add</i></a>
             </div>
           </div>

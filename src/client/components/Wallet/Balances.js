@@ -9,7 +9,7 @@ class Balances extends Component {
     return (
       <div className="balance-container">
         <div className="header-container">
-          <h5>Balances</h5>
+          <div style={{ fontSize: '18px' }}>Balances</div>
         </div>
         <div className="content">
           <div className="balance-box">

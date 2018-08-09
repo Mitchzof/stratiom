@@ -47,7 +47,7 @@ class KeyInput extends Component {
         <div className="privkey-panel valign-wrapper">
           <form className="col s10 offset-s1" onSubmit={ this.handleSubmit }>
             <div className="row center-align">
-              <h6 style={{ marginTop: '40px', marginBottom: '15px' }}>
+              <h6 style={{ marginTop: '40px', marginBottom: '15px', fontSize: '18px' }}>
                 Enter your secret key to access the dashboard.
               </h6>
               <div className="input-field col s12">

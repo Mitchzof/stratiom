@@ -41,7 +41,7 @@ class XLMModal extends Component {
         <div className="modal-content">
           <form className="col s10 offset-s1">
             <div className="row">
-              <h5><b>Link XLM to Debt Asset</b></h5>
+              <h6><b>Link XLM to Debt Asset</b></h6>
               <p>
                 <b>WARNING: </b>This can be extremely dangerous and can result in a loss of
                 XLM if used carelessly or improperly.  Read the following if you are in any

@@ -15,12 +15,12 @@ class Terms extends Component {
             <div className="col s12">
               <div className="page-container">
                 <div className="row content-header">
-                  <h4>Terms and Conditions</h4>
+                  <h6>Terms and Conditions</h6>
                 </div>
                 <div className="row content">
                   <div className="col s12">
                     <div className="row">
-                      <h5>1. Cryptocurrency Risks</h5>
+                      <h6>1. Cryptocurrency Risks</h6>
                       <p>
                         Cryptocurrency assets are subject to high market risks and volatility.
                         Past performance is not indicative of future results. Investments in blockchain
@@ -30,7 +30,7 @@ class Terms extends Component {
                       </p>
                     </div>
                     <div className="row">
-                      <h5>2. Stellar Network Usage</h5>
+                      <h6>2. Stellar Network Usage</h6>
                       <p>
                         Stratiom is only a user interface to Stellar and does not operate the
                         Stellar network. Stratiom is unable to control the actions
@@ -42,7 +42,7 @@ class Terms extends Component {
                       </p>
                     </div>
                     <div className="row">
-                      <h5>3. Privacy</h5>
+                      <h6>3. Privacy</h6>
                       <p>
                         Your privacy is important to us.
                         Please read the <Link to='/privacy'>privacy policy</Link> for more information.
@@ -57,7 +57,7 @@ class Terms extends Component {
                       </p>
                     </div>
                     <div className="row">
-                      <h5>5. Usage Responsibilities</h5>
+                      <h6>5. Usage Responsibilities</h6>
                       <p>
                         All responsibilities during usage of
                         Stratiom are accepted by the user and solely the user.
@@ -69,7 +69,7 @@ class Terms extends Component {
                       </p>
                     </div>
                     <div className="row">
-                      <h5>6. Disclaimer of Warranty</h5>
+                      <h6>6. Disclaimer of Warranty</h6>
                       <p>
                         Stratiom is open source software
                         licensed under the Apache-2.0 license. It is provided

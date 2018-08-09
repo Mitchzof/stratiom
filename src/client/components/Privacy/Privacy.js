@@ -15,7 +15,7 @@ class Privacy extends Component {
             <div className="col s12">
               <div className="page-container">
                 <div className="row content-header">
-                  <h4>Privacy Policy</h4>
+                  <h6>Privacy Policy</h6>
                 </div>
                 <div className="row content">
                   <div className="col s12">
