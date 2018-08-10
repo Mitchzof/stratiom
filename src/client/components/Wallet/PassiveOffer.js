@@ -1,6 +1,15 @@
 import React, { Component } from 'react';
 import * as stellar from './helpers/stellarHelper';
 
+const styles = [
+  {
+    backgroundColor: '#f5f7fa'
+  },
+  {
+    backgroundColor: 'white'
+  }
+]
+
 class PassiveOffer extends Component {
   constructor(props) {
     super(props);
@@ -49,7 +58,7 @@ class PassiveOffer extends Component {
       );
     }
     return (
-      <div className="passive-offer" id={ this.props.offer.id } style={ (this.state.deleted) ? {display: 'none'} : {} }>
+      <div className="passive-offer" id={ this.props.offer.id } style={ (this.state.deleted) ? {display: 'none'} : (this.props.index % 2 == 0) ? styles[0] : styles[1] }>
         <div className="offer-content" style={{ width: '70%', minWidth: '275px' }}><p>{ this.props.offer.buying.asset_issuer }</p></div>
         <div className="offer-content" style={{ width: '15%', minWidth: '75px' }}><p>${ this.props.offer.amount.slice(0, this.props.offer.amount.length - 5) }</p></div>
         <div className="offer-content" style={{ width: '10%', minWidth: '50px' }}><p>{ this.props.offer.price.slice(0, this.props.offer.price.length - 4) }</p></div>

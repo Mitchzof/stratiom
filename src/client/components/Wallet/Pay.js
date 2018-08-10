@@ -91,12 +91,12 @@ class Pay extends Component {
         stellar.issueAssets(this.props.privkey, this.state.accountId, this.state.amount, this.state.memo)
         .then(res => {
           if (this.mounted) {
-            this.setState({ loading: false, msg: '', accountId: '', amount: '', step: 1 });
+            this.setState({ loading: false, msg: '', memo: '', accountId: '', amount: '', step: 1 });
           }
           M.toast({ html: 'Success: Payment has been sent', classes: 'success-toast' });
         }).catch(err => {
           if (this.mounted) {
-            this.setState({ loading: false, msg: '', accountId: '', amount: '', step: 1  });
+            this.setState({ loading: false, msg: '' });
           }
           console.log(err);
           if (err.message.startsWith('Text should be')) {
@@ -113,12 +113,12 @@ class Pay extends Component {
         .then(res => {
           if (res) {
             if (this.mounted) {
-              this.setState({ loading: false, msg: '', accountId: '', amount: '', step: 1 });
+              this.setState({ loading: false, msg: '', memo: '', accountId: '', amount: '', step: 1 });
             }
             M.toast({ html: 'Success: Payment has been sent', classes: 'success-toast' });
           } else {
             if (this.mounted) {
-              this.setState({ loading: false, msg: '', accountId: '', amount: '', step: 1 });
+              this.setState({ loading: false, msg: '', memo: '', accountId: '', amount: '', step: 1 });
             }
             M.toast({ html: 'Error: There is no payment path that reaches the specified account', classes: 'error-toast' });
           }
@@ -139,7 +139,15 @@ class Pay extends Component {
   }
 
   next() {
-    this.setState({ step: this.state.step + 1 });
+    if (this.state.step == 1) {
+      if (stellar.isValidKey(this.state.accountId)) {
+        this.setState({ step: this.state.step + 1 });
+      } else {
+        M.toast({ html: 'Error: Invalid Account ID', classes: 'error-toast' });
+      }
+    } else {
+      this.setState({ step: this.state.step + 1 });
+    }
   }
 
   render() {

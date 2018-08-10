@@ -26,6 +26,10 @@ export const loadAccount = (pubkey) => {
   return server.loadAccount(pubkey);
 }
 
+export const isValidKey = (pubkey) => {
+  return StellarSdk.StrKey.isValidEd25519PublicKey(pubkey);
+}
+
 export const loadXLMOffer = (accountId) => {
   return server.loadAccount(accountId)
   .then((acc) => {

@@ -45,12 +45,20 @@
 }
 
 .logo-container {
-  margin-left: 50px;
+  margin-left: 25px;
   color: #505558;
+  //display: flex !important;
+  //align-items: center;
+  //justify-content: space-between;
 
   @media #{$medium-and-down} {
     margin-left: 0px;
   }
+}
+
+.logo {
+  height: 40px;
+  margin-right: 10px;
 }
 
 .cp-nav {

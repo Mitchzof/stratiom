@@ -87,10 +87,12 @@ class PathManager extends Component {
 
   render() {
     let rows = [];
+    let count = 0;
 
     this.offers.forEach(offer => {
       if (offer.buying.asset_code == 'STRTMUSD' && offer.selling.asset_code == 'STRTMUSD') {
-        rows.push(<PassiveOffer key={ offer.id } offer={ offer } privkey={ this.props.privkey } loadAccount={ this.props.loadAccount } />);
+        rows.push(<PassiveOffer key={ offer.id } offer={ offer } privkey={ this.props.privkey } loadAccount={ this.props.loadAccount } index={ count } />);
+        count++;
       }
     })
 
@@ -127,7 +129,7 @@ class PathManager extends Component {
                 You are not currently mediating payments for any accounts</div>
               </div>
             }
-            <div className="passive-offer" style={{ background: 'white', borderTop: '1px solid rgba(0, 0, 0, 0.2)', display: 'flex', justifyContent: 'center', height: '60px' }}>
+            <div className="passive-offer" style={{ background: 'white', borderTop: '1px solid rgba(0, 0, 0, 0.2)', display: 'flex', justifyContent: 'center', height: '51px' }}>
               <a className="btn btn-small waves-effect waves-light" onClick={ this.openModal }><i className="material-icons">add</i></a>
             </div>
           </div>

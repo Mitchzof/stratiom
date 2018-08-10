@@ -50,6 +50,7 @@ class WalletSetup extends Component {
 
   loadAccount() {
     stellar.loadAccount(this.props.pubkey).then((acc) => {
+      console.log(acc);
       this.setState({ accountIsValid: true, loaded: true });
       this.props.hasLoaded(true);
       this.props.loadAccount(acc);

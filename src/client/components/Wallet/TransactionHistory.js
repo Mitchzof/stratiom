@@ -66,6 +66,7 @@ class TransactionHistory extends Component {
 
   render() {
     let rows = [];
+    var count = 0;
 
     this.payments.forEach(tx => {
       if ((tx.type == 'payment' || tx.type == 'path_payment') && tx.asset_code == 'STRTMUSD') {
@@ -81,7 +82,8 @@ class TransactionHistory extends Component {
           tx.direction = 'in';
         }
 
-        rows.push(<Transaction key={ tx.id } tx={ tx } />);
+        rows.push(<Transaction key={ tx.id } tx={ tx } index={ count } />);
+        count++;
       }
     });
 

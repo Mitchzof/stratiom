@@ -12,17 +12,24 @@ class Stats extends Component {
     };
   }
 
+  componentWillUnmount() {
+    this.mounted = false;
+  }
+
   componentDidMount() {
+    this.mounted = true;
     var elems = document.querySelectorAll('.modal');
     M.Modal.init(elems);
     fetch('https://min-api.cryptocompare.com/data/pricemultifull?fsyms=XLM&tsyms=USD')
     .then(data => data.json())
     .then(stats => {
-      this.setState({
-        price: stats.DISPLAY.XLM.USD.PRICE,
-        change: stats.DISPLAY.XLM.USD.CHANGEPCT24HOUR + '%',
-        gainedValue: (stats.DISPLAY.XLM.USD.CHANGEPCT24HOUR.charAt(0) == '-') ? false : true
-      })
+      if (this.mounted) {
+        this.setState({
+          price: stats.DISPLAY.XLM.USD.PRICE,
+          change: stats.DISPLAY.XLM.USD.CHANGEPCT24HOUR + '%',
+          gainedValue: (stats.DISPLAY.XLM.USD.CHANGEPCT24HOUR.charAt(0) == '-') ? false : true
+        });
+      }
     })
   }
 
