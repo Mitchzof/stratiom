@@ -29,6 +29,8 @@ class PathManager extends Component {
     this.loadOffers = this.loadOffers.bind(this);
     this.openModal = this.openModal.bind(this);
     this.clearFields = this.clearFields.bind(this);
+    this.target = this.target.bind(this);
+    this.initialize = this.initialize.bind(this);
     this.state = {
       loading: true,
       target: ''
@@ -37,12 +39,15 @@ class PathManager extends Component {
 
   componentDidMount() {
     this.mounted = true;
-    this.target = this.target.bind(this);
+    this.initialize();
+  }
+
+  initialize() {
     this.props.account.offers({ order: "desc", limit: 100 }).then(offers => {
       this.loadOffers(offers);
     }).catch(e => {
-      setTimeout(this.forceUpdate, 1500);
-    })
+      setTimeout(this.initialize, 1500);
+    });
   }
 
   loadOffers(offers) {
@@ -108,7 +113,7 @@ class PathManager extends Component {
 
     return (
       <div className="cp-container">
-        <div className="offer-container">
+        <div className="offer-container small">
           <div className="offer-header" style={{ display: 'flex', 'justifyContent': 'space-between' }}>
             <h6>
               Payment Mediation Manager
@@ -125,11 +130,13 @@ class PathManager extends Component {
             }
             {
               (rows.length > 0) ? rows :
-              <div className="row center-align" style={{ marginBottom: '0px' }}><div style={{ fontSize: '17px', backgroundColor: 'white', height: '100%', padding: '30px 0px 30px 0px'}}>
-                You are not currently mediating payments for any accounts</div>
+              <div className="row center-align" style={{ marginBottom: '0px', height: '140px' }}>
+                <div style={{ fontSize: '17px', display: 'flex', alignItems: 'center', backgroundColor: 'white', justifyContent: 'center', height: '100%', padding: '30px 0px 30px 0px'}}>
+                  You are not currently mediating payments for any accounts
+                </div>
               </div>
             }
-            <div className="passive-offer" style={{ background: 'white', borderTop: '1px solid rgba(0, 0, 0, 0.2)', display: 'flex', justifyContent: 'center', height: '51px' }}>
+            <div className="passive-offer" style={{ background: 'white', borderTop: '1px solid rgba(0, 0, 0, 0.2)', display: 'flex', justifyContent: 'center', height: '60px' }}>
               <a className="btn btn-small waves-effect waves-light" onClick={ this.openModal }><i className="material-icons">add</i></a>
             </div>
           </div>

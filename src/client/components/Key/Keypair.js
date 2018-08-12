@@ -32,13 +32,13 @@ class Keypair extends Component {
               <div className="row">
                 Public Key
                 <div className="key-container">
-                  <div id="pubkey" onClick={ this.handleSelect } className="content">{ this.props.pubkey }</div>
+                  <div id="pubkey" onClick={ this.handleSelect } style={{ marginTop: '12.5px' }} className="content">{ this.props.pubkey }</div>
                 </div>
               </div>
               <div className="row">
                 Secret Key - <b>Warning:</b> Save and keep this secure
                 <div className="key-container">
-                  <div id="privkey" onClick={ this.handleSelect } className="content">{ this.props.privkey }</div>
+                  <div id="privkey" onClick={ this.handleSelect } style={{ marginTop: '12.5px' }} className="content">{ this.props.privkey }</div>
                 </div>
               </div>
             </div>

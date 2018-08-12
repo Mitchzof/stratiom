@@ -75,7 +75,7 @@ class Stats extends Component {
             </div>
             <div className="button-container" style={{width: '34%'}}>
               <div className="modal-trigger btn btn-large waves-effect waves-dark white-button" href="#xlmmodal"><i className="material-icons">compare_arrows</i></div>
-              <p>XLM Buyback</p>
+              <p>XLM Settlement</p>
             </div>
             <div className="button-container" style={{width: '33%'}}>
               <div className="modal-trigger btn btn-large waves-effect waves-light blue-button" href="#inflationmodal"><i className="material-icons">edit</i></div>

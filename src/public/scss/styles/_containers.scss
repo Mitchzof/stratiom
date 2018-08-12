@@ -60,7 +60,7 @@
 }
 
 .key-container {
-	margin: 0px 0px 0px 0px;
+	padding: 0px 5px 0px 5px;
 	display: flex;
 	height: 50px;
 	align-items: center;
@@ -68,11 +68,11 @@
 	background-color: $bg;
 	border: 1px solid rgba(119, 119, 119, 0.08);
 	border-radius: 3px;
-	overflow: scroll;
+	overflow-y: hidden;
+	overflow-x: scroll;
 
 	.content {
 		font-size: 17px;
-		margin-left: 5px;
 	}
 }
 

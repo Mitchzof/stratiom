@@ -55,7 +55,6 @@
   .iou-content {
     //border: 1px solid rgba(63, 123, 222, 0.8);
     //background: linear-gradient(to right, rgba(63, 123, 222, 0.3), rgba(63, 123, 222, 0.15));
-    background-color: white;
     height: auto;
     width: 100%;
   }
@@ -70,7 +69,7 @@
   align-items: center;
   justify-content: center;
   word-wrap: break-word;
-  border-top: 1px solid rgba(63, 123, 222, 0.35);
+  border-top: 1px solid rgba(119, 119, 119, 0.2);
   //background: linear-gradient(to right, rgba(63, 123, 222, 0.2), rgba(63, 123, 222, 0.1));
   background-color: white;
 
@@ -89,10 +88,8 @@
   word-wrap: break-word;
   //border-top: 1px solid rgba(63, 123, 222, 0.35);
   border-top: 1px solid rgba(0, 0, 0, 0.15);
-  padding-left: 20px;
-  padding-right: 20px;
+  padding: 5px 20px 5px 20px;
   //background: linear-gradient(to right, rgba(63, 123, 222, 0.2), rgba(63, 123, 222, 0.1));
-  background-color: white;
 }
 
 .tx {
@@ -141,7 +138,6 @@
   transition: max-height 0.3s ease-in;
   -webkit-transition: max-height 0.15s ease-in;
   //background: linear-gradient(to right, rgba(63, 123, 222, 0.2), rgba(63, 123, 222, 0.1));
-  background-color: white;
 }
 
 .dropdown {
@@ -582,7 +578,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding: 0px 20px 0px 20px;
+  padding: 5px 20px 5px 20px;
   flex-wrap: wrap;
   //border-top: 1px solid rgba(63, 123, 222, 0.35);
   border-top: 1px solid rgba(0, 0, 0, 0.2);

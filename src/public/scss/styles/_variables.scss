@@ -12,6 +12,11 @@ $black-text: #505558;
   display: flex;
 }
 
+.app {
+  height: calc(100% + 100px);
+  overflow: hidden;
+}
+
 h6 {
   font-weight: 300;
   font-size: 21px;

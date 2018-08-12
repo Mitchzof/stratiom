@@ -2,6 +2,15 @@ import React, { Component } from 'react';
 import * as stellar from './helpers/stellarHelper';
 import Loader from '../Misc/Loader';
 
+const styles = [
+  {
+    backgroundColor: '#f5f7fa'
+  },
+  {
+    backgroundColor: 'white'
+  }
+]
+
 /*
   Debt settlement component.  Loads total owed amount from balances.
 */
@@ -52,6 +61,9 @@ class IOU extends Component {
           M.Modal.getInstance(document.getElementById('settlementmodal')).open();
         }
       } else {
+        if ( this.mounted ) {
+          this.setState({ loading: false });
+        }
         M.toast({ html: 'Error: User does not support XLM settlement', classes: 'error-toast' });
       }
     }).catch(e => {
@@ -132,7 +144,7 @@ class IOU extends Component {
     }
 
     return (
-      <div id={ this.props.issuer }>
+      <div id={ this.props.issuer } style={ styles[1] }>
         <div className="iou">
           <div style={{maxWidth: '100%'}}><p><b>Account:</b> { this.props.issuer }</p></div>
           <div>
@@ -148,9 +160,13 @@ class IOU extends Component {
             }
           </a>
         </div>
-        <div className="iou-expansion" style={{ maxHeight: (this.state.expanded) ? '500px' : '0px' }}>
-          { content }
-        </div>
+        {
+          (this.state.expanded) ?
+          <div className="iou-expansion">
+            { content }
+          </div> :
+          <div></div>
+        }
       </div>
     );
   }

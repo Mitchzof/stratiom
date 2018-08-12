@@ -41,7 +41,7 @@ class AccountNotCreated extends Component {
   render() {
     if (this.state.loading) {
       return (
-        <div className="panel-container">
+        <div className="panel-container small">
           <div className="loader-container" style={{ paddingTop: '15vh', paddingBottom: '15vh', marginTop: '0px' }}>
             <Loader />
           </div>
@@ -49,7 +49,7 @@ class AccountNotCreated extends Component {
       )
     }
     return (
-      <div className="panel-container">
+      <div className="panel-container small">
         <div className="panel-header" style={{display: 'flex', justifyContent: 'space-between'}}>
             <h6>
               Activate your account

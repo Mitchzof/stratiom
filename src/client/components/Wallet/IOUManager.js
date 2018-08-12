@@ -53,12 +53,14 @@ class IOUManager extends Component {
 
   render() {
     let rows = []
+    let count = 0;
 
     if (this.props.account) {
       this.props.account.balances.forEach(asset => {
         if (parseFloat(asset.balance) > 0 && asset.asset_issuer != "native" && asset.asset_code == "STRTMUSD") {
           rows.push(<IOU key={ asset.asset_issuer } balance={ asset.balance } issuer={ asset.asset_issuer }
-            loadAccount={ this.props.loadAccount } privkey={ this.props.privkey } pubkey={ this.props.pubkey } setXLMOffer={ this.setXLMOffer }/>);
+            loadAccount={ this.props.loadAccount } privkey={ this.props.privkey } pubkey={ this.props.pubkey } setXLMOffer={ this.setXLMOffer } index={ count }/>);
+          count++;
         }
       });
     }

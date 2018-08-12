@@ -21,15 +21,14 @@ class MidContainer extends Component {
                       your private keys or sensitive data.
                     </p>
                     <p>
-                      Once you have logged in, <b>Stratiom</b> functions similarly to a normal wallet.
-                      The difference is that <b>Stratiom</b> primarily facilitates peer-to-peer asset/debt
-                      transactions, without anchors.  The value of these assets is
-                      entirely defined by trust between you, and your transaction partner.
+                      Using <b>Stratiom</b> is similar to using a normal Stellar wallet.
+                      The difference is that <b>Stratiom</b> primarily facilitates peer-to-peer asset
+                      transactions, without the use of anchors.  These assets are natively tied to USD, though ultimately
+                      act as a persistant IOU stored on the Stellar network.
                     </p>
                     <p>
-                      We encourage debts be settled via the native Stellar currency, Lumens,
-                      to insure an easier transaction flow.  However, debts can be settled for fiat
-                      currency as well.
+                      Once you have logged in for the first time, you will be prompted to complete a brief tutorial that gives
+                      an overview of the basic features and procedures that <b>Stratiom</b> offers.
                     </p>
                     {
                       (TESTNET) ? '' : <p>Looking to test Stratiom?  Click <a href="https://testnet.stratiom.io">here</a> to use the testnet.</p>

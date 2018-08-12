@@ -64,15 +64,18 @@ class LinkXLM extends Component {
   reload() {
     this.offers = [];
     this.setState({ loading: true });
+
     fetch('https://min-api.cryptocompare.com/data/price?fsym=XLM&tsyms=USD')
     .then(data => data.json())
     .then(price => {
       this.setState({ price: price.USD })
     });
+
     this.props.account.offers({ order: "desc", limit: 100 }).then(offers => {
       this.loadOffers(offers);
     }).catch(e => {
-      setTimeout(this.forceUpdate, 1500);
+      console.log(e);
+      setTimeout(this.reload, 1500);
     });
   }
 

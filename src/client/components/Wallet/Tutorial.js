@@ -37,9 +37,10 @@ class Tutorial extends Component {
               <div className="row">
                 <p>
                   The first steps to getting started involve understanding how we utilize trustlines.
-                  Without the use of anchors, each user individually issues a unique asset
-                  as a promise, tied to their debt.  In order to receive these debt assets, or payments,
-                  you must create a trustline to another user.  This can be done through the "Add Trust" page.
+                  Without the use of anchors, each user individually issues a unique asset,
+                  tied to their debt.  In order to receive a payment, you must have
+                  a trustline created for the sender{'\''}s account ID.  This can be done
+                  through the "Add Trust" page.
                 </p>
               </div>
             </div>
@@ -120,7 +121,7 @@ class Tutorial extends Component {
                 <p>
                   The second way debt can be settled is in real life, via fiat currency.  Once you are
                   paid in real life, simply return the debt asset to the initial sender via the "Payment Manager" on
-                  the "Overview" page.
+                  the main page.
                 </p>
               </div>
             </div>

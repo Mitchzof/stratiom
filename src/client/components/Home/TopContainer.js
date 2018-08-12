@@ -12,7 +12,7 @@ class TopContainer extends Component {
                 <div className="col s7">
                   <div className="row">
                     <p>
-                      <b>Stratiom</b> is a peer-to-peer, web-based wallet for the Stellar Network.
+                      <b>Stratiom</b> is an open-source, peer-to-peer, web-based wallet for the Stellar Network.
                     </p>
                     <p>
                       The platform is a user interface that interacts with the Stellar
@@ -20,7 +20,7 @@ class TopContainer extends Component {
                     </p>
                     <p>
                       <b>Stratiom</b> aims to simplify and popularize peer-to-peer
-                      payments on the Stellar ecosystem, while offering these features in a secure manner.
+                      payments in the Stellar ecosystem, while offering these features in an easy to use, secure manner.
                       None of your data is stored on our servers, as Stratiom is purely an interface for interaction with the Stellar network.
                     </p>
                   </div>

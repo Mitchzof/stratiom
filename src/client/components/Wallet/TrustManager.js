@@ -100,7 +100,7 @@ class TrustManager extends Component {
 
     return (
       <div className="cp-container">
-        <div className="panel-container">
+        <div className="panel-container small">
           <div className="row panel-header">
             <h6>
               Stratiom Trustlines
@@ -109,7 +109,7 @@ class TrustManager extends Component {
           <div className="row panel-content">
             <div className="trustline-container">
               { (rows.length > 0) ? rows :
-                <div className="row center-align"><p style={{ fontSize: '17px' }}>
+                <div className="row center-align" style={{ height: '60px', display: 'flex', justifyContent: 'center', alignItems: 'center' }} ><p style={{ fontSize: '17px' }}>
                   You do not currently have any Stratiom trustlines</p>
                 </div>
               }

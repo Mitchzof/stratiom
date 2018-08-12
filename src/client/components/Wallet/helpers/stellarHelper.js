@@ -302,8 +302,18 @@ export const attemptPathPayment = (privkey, accountId, amount, note) => {
       .then(paths => {
         if (paths.records.length > 0) {
           for (var i = 0; i < paths.records.length; i++) {
-            if (paths.records[i].source_asset_code == 'STRTMUSD'  && paths.records[i].source_asset_issuer == keypair.publicKey()) {
-              return paths.records[i];
+            if (paths.records[i].source_asset_code == 'STRTMUSD') {
+              let isValid = true;
+              paths.records[i].path.forEach(path => {
+                if (path.asset_issuer == accountId) {
+                  isValid = false;
+                }
+              });
+              if (isValid) {
+                return paths.records[i];
+              } else if (i == paths.records.length - 1) {
+                return [];
+              }
             } else if (i == paths.records.length - 1) {
               return [];
             }
@@ -318,7 +328,6 @@ export const attemptPathPayment = (privkey, accountId, amount, note) => {
   }).then(unflattenedPaths => {
     return [].concat.apply([], unflattenedPaths);
   }).then(paths => {
-    console.log(paths);
     return pathPayment(
       privkey,
       paths,
@@ -346,7 +355,7 @@ const pathPayment = (privkey, paths, accountId, amount, note) => {
           destAsset: new StellarSdk.Asset('STRTMUSD', path.destination_asset_issuer),
           destAmount: amount,
           path: path.path.map(asset => new StellarSdk.Asset(asset.asset_code, asset.asset_issuer))
-        }))
+        }));
       if (note) {
         let memo = new StellarSdk.Memo("text", note);
         transaction = transaction.addMemo(memo).build();
@@ -354,19 +363,17 @@ const pathPayment = (privkey, paths, accountId, amount, note) => {
         transaction = transaction.build();
       }
       transaction.sign(keypair);
-      return server.submitTransaction(transaction);
+      return server.submitTransaction(transaction).then(res => {
+        return res;
+      }).catch(e => {
+        if (paths.length == 1) {
+          return false;
+        } else {
+          return pathPayment(privkey, paths.slice(1), accountId, amount, note);
+        }
+      });
     });
   }
-}
-
-export const loadOffers = (pubkey) => {
-  return server.loadAccount(pubkey)
-  .then((account) => {
-    acc = account;
-    return server.offers('accounts', acc.account_id).call()
-  }).then(offers => {
-    console.log(offers);
-  });
 }
 
 export const settleDebt = (privkey, accountId, amount) => {
