@@ -73,8 +73,8 @@ class Stats extends Component {
               </Link>
               <p>Send Funds</p>
             </div>
-            <div className="button-container" style={{width: '34%'}}>
-              <div className="modal-trigger btn btn-large waves-effect waves-dark white-button" href="#xlmmodal"><i className="material-icons">compare_arrows</i></div>
+            <div className="button-container" style={{width: '33%'}}>
+              <div className="modal-trigger btn btn-large waves-effect waves-light blue-button" href="#xlmmodal"><i className="material-icons">compare_arrows</i></div>
               <p>XLM Settlement</p>
             </div>
             <div className="button-container" style={{width: '33%'}}>

@@ -14,7 +14,6 @@ class PassiveOffer extends Component {
   constructor(props) {
     super(props);
     this.delete = this.delete.bind(this);
-    console.log(this.props.offer);
     this.state = {
       loading: false
     }

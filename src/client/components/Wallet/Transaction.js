@@ -44,7 +44,7 @@ class Transaction extends Component {
         <i style={{ width: '10%' }} className="material-icons">arrow_forward</i>
         <div style={{ width: '20%', minWidth: '100px' }}><p><span style={{color: 'green', fontSize: '18px'}}>+ </span>${ this.props.tx.amount.slice(0, this.props.tx.amount.length - 5) }</p></div>
         <div style={{ width: '20%', minWidth: '100px' }}><p>{ (this.props.tx.isRefund) ? 'Debt Settlement' : (this.props.tx.type == 'payment') ? 'Direct Payment' : 'Path Payment' }</p></div>
-        <div style={{ width: '20%', minWidth: '100px' }}><p className="selectable" style={{ width: '100px' }} onClick={ this.copyToClipboard }>{ this.props.tx.from.slice(0, 5) }...{ this.props.tx.from.slice(this.props.tx.from.length - 5, this.props.tx.from.length) }</p></div>
+        <div style={{ width: '20%', minWidth: '100px' }}><p className="selectable" style={{ width: '110px' }} onClick={ this.copyToClipboard }>{ this.props.tx.from.slice(0, 5) }...{ this.props.tx.from.slice(this.props.tx.from.length - 5, this.props.tx.from.length) }</p></div>
         <div style={{ width: '20%', minWidth: '100px' }}><p>{ this.date.toDateString() }</p></div>
         <div style={{ width: '5%', minWidth: '15px' }}><a href={ (TESTNET) ? "https://stellar.expert/explorer/testnet/tx/" + this.props.tx.transaction_hash : "https://stellar.expert/explorer/public/tx/" + this.props.tx.transaction_hash } target='_blank'><i className="material-icons tiny">call_made</i></a></div>
         <div style={{ width: '2%', minWidth: '20px' }}>{ (this.props.tx.memo) ?
@@ -65,7 +65,7 @@ class Transaction extends Component {
         <i style={{ width: '10%' }} className="material-icons">arrow_back</i>
         <div style={{ width: '20%', minWidth: '100px' }}><p><span style={{color: 'red', fontSize: '18px'}}>- </span>${ this.props.tx.amount.slice(0, this.props.tx.amount.length - 5) }</p></div>
         <div style={{ width: '20%', minWidth: '100px' }}><p>{ (this.props.tx.isRefund) ? 'Debt Settlement' : (this.props.tx.type == 'payment') ? 'Direct Payment' : 'Path Payment' }</p></div>
-        <div style={{ width: '20%', minWidth: '100px' }}><p className="selectable" onClick={ this.copyToClipboard } style={{ width: '100px' }}>{ this.props.tx.to.slice(0, 5) }...{ this.props.tx.to.slice(this.props.tx.to.length - 5, this.props.tx.to.length) }</p></div>
+        <div style={{ width: '20%', minWidth: '100px' }}><p className="selectable" onClick={ this.copyToClipboard } style={{ width: '110px' }}>{ this.props.tx.to.slice(0, 5) }...{ this.props.tx.to.slice(this.props.tx.to.length - 5, this.props.tx.to.length) }</p></div>
         <div style={{ width: '20%', minWidth: '100px' }}><p>{ this.date.toDateString() }</p></div>
         <div style={{ width: '5%', minWidth: '15px' }}><a href={ (TESTNET) ? "https://stellar.expert/explorer/testnet/tx/" + this.props.tx.transaction_hash : "https://stellar.expert/explorer/public/tx/" + this.props.tx.transaction_hash } target='_blank'><i className="material-icons tiny">call_made</i></a></div>
         <div style={{ width: '2%', minWidth: '10px' }}>{ (this.props.tx.memo) ?

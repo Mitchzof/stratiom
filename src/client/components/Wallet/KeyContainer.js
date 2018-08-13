@@ -5,7 +5,7 @@ import KeyLink from '../Key/KeyLink';
 import KeyInput from './KeyInput';
 
 const selectedStyle = {
-  backgroundColor: '#3f7bde',
+  background: 'linear-gradient(to right, #172c5f, #385291)',
   color: 'white'
 }
 

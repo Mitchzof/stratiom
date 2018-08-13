@@ -31,7 +31,6 @@ class FlagsNotSet extends Component {
     e.preventDefault();
     this.setState({ loading: true });
     stellar.setFlags(this.props.privkey).then(res => {
-      console.log(res);
       if (this.mounted) {
         this.props.loadAccount();
         M.toast({ html: 'Success: Flags have been set', classes: 'success-toast' });
