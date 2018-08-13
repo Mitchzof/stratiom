@@ -49,7 +49,7 @@ class PassiveOffer extends Component {
   render() {
     if (this.state.loading) {
       return (
-        <div className="passive-offer">
+        <div className="passive-offer" style={{ height: '63px', backgroundColor: (this.props.index % 2 == 0) ? '#f5f7fa' : 'white' }}>
           <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
             Deleting...
           </div>

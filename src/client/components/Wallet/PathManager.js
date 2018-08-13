@@ -71,11 +71,8 @@ class PathManager extends Component {
   clearFields() {
     this.setState({ loading: false });
     this.offers = [];
-    this.props.account.offers({ order: "desc", limit: 100 }).then(offers => {
-      this.loadOffers(offers);
-    }).catch(e => {
-      setTimeout(this.forceUpdate, 1500);
-    });
+    this.forceUpdate();
+    this.initialize();
   }
 
   target(accountId) {
@@ -148,6 +145,7 @@ class PathManager extends Component {
             <p>This component allows you to manage passive offers that have been placed on the SDEX for the purpose of payment mediation.</p>
             <p>Account ID represents the trustline you are mediating payments for, amount is the total you are willing to mediate, and price is the exchange rate
             of your debt asset to the trustlines debt asset.</p>
+            <p>Note that if you delete a trustline, the passive offer will persist, though it cannot not be filled.</p>
           </div>
           <div className="modal-footer">
             <a href="#!" className="modal-close waves-effect waves-dark btn-flat">Close</a>
