@@ -68,12 +68,14 @@
 .logo-container {
   margin-left: 25px;
   color: #505558;
+  height: $navbar-height !important;
   //display: flex !important;
   //align-items: center;
   //justify-content: space-between;
 
   @media #{$medium-and-down} {
     margin-left: 0px;
+    height: $navbar-height-mobile !important;
   }
 }
 

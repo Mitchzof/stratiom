@@ -7,7 +7,7 @@
 }
 
 .top-container {
-	padding: 200px 0;
+  padding: 200px 0;
   @include transform(skew(0deg, -10deg));
   margin-top: -240px;
 	min-height: calc(100vh + 150px);

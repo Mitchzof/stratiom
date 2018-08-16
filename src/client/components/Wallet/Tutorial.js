@@ -15,7 +15,7 @@ class Tutorial extends Component {
         <div className="modal-content" style={{ padding: '0px 0px 0px 0px' }}>
           <div className="carousel carousel-slider center tutorial-carousel" id="tutorial-carousel">
             <div className="carousel-fixed-item center">
-              <a onClick={ this.props.next } className="btn waves-effect white black-text darken-text-2">Next</a>
+              <a onClick={ this.props.next } className="btn waves-effect white black-text darken-text-2 next-button">Next</a>
             </div>
             <div className="carousel-item tutorial-blue" href="#one!">
               <div className="row center-align">

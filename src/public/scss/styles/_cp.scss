@@ -38,6 +38,12 @@
   }
 }
 
+.next-button {
+  @media #{$small-and-down} {
+    display: none;
+  }
+}
+
 .iou-container {
   @extend .z-depth-1;
   overflow: hidden;
@@ -627,6 +633,7 @@
     background-color: $logo;
     color: white;
     padding: 20px 20px 20px 20px;
+    overflow-y: scroll;
   }
 
   .tutorial-dark {
@@ -634,6 +641,7 @@
     background-color: $bg-dark;
     color: $bg-dark-text;
     padding: 20px 20px 20px 20px;
+    overflow-y: scroll;
   }
 }
 

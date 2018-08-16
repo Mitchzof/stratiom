@@ -54,7 +54,7 @@ class Navbar extends Component {
             <Link to="/">
               <div className="brand-logo logo-container" style={{color: this.state.color, display: 'flex', alignItems: 'center', height: '64px'}}>
                 <img className="logo" src={ (this.state.scrollY != 0 || this.props.fixed) ? "/assets/logo.png" : "/assets/white-logo.png"} />
-                <div style={{ height: '64px' }}>Stratiom { (TESTNET) ? <b style={{ fontWeight: '300', fontSize: '10px' }}>Testnet</b> : '' }</div>
+                <div style={{ height: '100%', overflow: 'hidden' }}>Stratiom { (TESTNET) ? <b style={{ fontWeight: '300', fontSize: '10px' }}>Testnet</b> : '' }</div>
               </div>
             </Link>
             <ul id="nav-mobile nav-link-container" className="right">
