@@ -67,7 +67,10 @@ class AccountNotCreated extends Component {
               Once the transaction has been completed and your account is verified.
               Click the refresh button above to reload your account from Horizon.
             </p>
-            <p>Note: Stratiom.io is currently running on the testnet, click the button below to fund your account</p>
+            {
+              (TESTNET) ?
+              <p>Note: Stratiom.io is currently running on the testnet, click the button below to fund your account</p> : <p></p>
+            }
           </div>
           { (TESTNET) ?
             <div className="row center-align">
